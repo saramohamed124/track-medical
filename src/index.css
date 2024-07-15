@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Avenir-Arabic;
+  src: url(../public/fonts/avenir-arabic-black.otf);
+}
+
+body {
+  margin: 0;
+  font-family: Avenir-Arabic;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

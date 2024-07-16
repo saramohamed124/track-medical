@@ -1,6 +1,8 @@
-import Header from "../Components/Home/components/Header/Header";
+import Deals from "../Components/Home/components/deals/Deals";
+import Header from "../Components/Home/components/header/Header";
+import Hospitals from "../Components/Home/components/hospitals/Hospitals";
 import Majors from "../Components/Home/components/majors/Majors";
-import Search from "../Components/Home/components/Search/Search";
+import Search from "../Components/Home/components/search/Search";
 
 function Home() {
     return ( 
@@ -8,7 +10,9 @@ function Home() {
             <Header/>
             <div className="container">
                 <Search/>
+                <Hospitals/>
                 <Majors/>
+                <Deals/>
             </div>
         </div>
      );

@@ -4,11 +4,9 @@ import { Logo } from "./components/Logo";
 
 function Navbar() {
     return (
-        <div className="navbar bg-base-100 flex justify-between">
-          <div className="navbar-center hidden lg:flex">
-            <Links/>
-          </div>
-          <div className="navbar-end flex justify-between w-full">
+        <div className="navbar bg-base-100 flex justify-between m-0">
+          <Logo/>      
+          <div className="lg:navbarend">
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                 <svg
@@ -26,7 +24,9 @@ function Navbar() {
               </div>
               <ListLinks/>
             </div>
-        <Logo/>
+        <div className="navbar-center hidden lg:flex">
+            <Links/>
+          </div>
           </div>
 </div>
 );

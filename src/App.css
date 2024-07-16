@@ -1,4 +1,10 @@
 :root {
   --main-color-green: #00998a;
   --main-color-orange: #f7941d;
+  --main-color-orange-dark: #d0770b;
+}
+
+.select {
+  background-image: url(./Components/Home/components/Search/assets/icons/expand_arrow.svg);
+  background-size: auto;
 }

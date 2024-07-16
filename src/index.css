@@ -6,7 +6,24 @@
   font-family: Avenir-Arabic;
   src: url(../public/fonts/avenir-arabic-black.otf);
 }
+@font-face {
+  font-family: Avenir-Arabic-heavy;
+  src: url(../public/fonts/avenir-arabic-heavy.otf);
+}
+@font-face {
+  font-family: Avenir-Arabic-book;
+  src: url(../public/fonts/avenir-arabic-book.otf);
+}
+.avenir-black {
+  font-family: Avenir-Arabic;
+}
 
+.avenir-heavy {
+  font-family: Avenir-Arabic-heavy;
+}
+.avenir-book {
+  font-family: Avenir-Arabic-book;
+}
 body {
   margin: 0;
   font-family: Avenir-Arabic;
@@ -17,4 +34,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.container {
+  @apply ps-4 pe-4;
+}
+.flex-between-center {
+  @apply flex justify-between items-center;
+}
+
+.navbarend {
+  @apply navbar-end flex justify-between w-full;
+}
+
+.checkbox {
+  --chkbg: black;
 }

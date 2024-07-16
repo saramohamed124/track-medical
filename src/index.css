@@ -60,3 +60,20 @@ code {
 .box:hover {
   transform: rotate(5deg) scale(1.1);
 }
+.parent-cards-flex {
+  @apply my-9 flex flex-row flex-wrap justify-center items-center;
+}
+
+.heading-cards-flex {
+  @apply text-3xl text-black  lg:order-1 flex items-center justify-center lg:justify-start my-3 text-center lg:text-start;
+  flex: 0 0 83%;
+}
+.browse-btn-more {
+  @apply btn rounded-3xl text-white bg-[--main-color-green] avenir-heavy max-w-[120px] w-[100px] m-3 order-3 lg:order-1;
+  flex: 0 0 34%;
+}
+
+.cards-flex {
+  @apply my-4 flex justify-center items-center gap-y-5 gap-x-5 w-full flex-wrap order-2 lg:order-1;
+  flex: 0 0 100%;
+}

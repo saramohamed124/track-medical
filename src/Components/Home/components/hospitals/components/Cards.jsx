@@ -6,7 +6,7 @@ import riyadh_img from '../assets/imgs/riyadh.jpg'
 
 function Cards() {
     return ( 
-        <div className='my-4 flex justify-center items-center gap-y-5 gap-x-5 w-full flex-wrap'>
+        <div className='cards-flex'>
             <div className="card card-compact bg-base-100 w-[215px] shadow-xl rounded-tr-md rounded-tl-md">
             <figure >
                 <img

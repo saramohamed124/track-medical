@@ -14,6 +14,7 @@ function Home() {
                 <Majors/>
                 <Deals/>
             </div>
+            
         </div>
      );
 }

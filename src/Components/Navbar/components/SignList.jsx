@@ -4,12 +4,12 @@ import signup_icon from '../assets/icons/signup.svg'
 function SignList() {
     return ( 
         <ul className="avenir-heavy text-black w-full lg:w-[230px] flex-between-center gap-5 lg:gap-1 flex-col text-5xl lg:text-[18px]">
-            <li className=" w-full flex flex-row items-center justify-start lg:justify-end gap-[10px] lg:gap-[2rem]">
+            <li className=" w-full flex flex-row items-center justify-end gap-[2rem]">
                 <Link>تسجيل دخول</Link>
                 <img className="w-[75px] lg:w-[25%] h-[50px]" src={signin_icon} alt="singin_icon"/>
                 </li>
             <hr className="w-full bg-black h-[1px]"/>
-            <li className=" w-full flex flex-row items-center justify-start lg:justify-end gap-[10px] lg:gap-[1rem]">
+            <li className=" w-full flex flex-row items-center justify-end gap-[1rem]">
                 <Link>إنشاء حساب جديد</Link>
                 <img className="w-[75px] lg:w-[25%] h-[50px]" src={signup_icon} alt="signup_icon"/>
                 </li>

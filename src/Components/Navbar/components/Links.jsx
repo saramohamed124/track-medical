@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Account from "./Account";
 function Links() {
     return ( 
-        <div className=" hidden min-[992px]:flex justify-between items-center flex-row-reverse gap-[3rem]">
+        <div className=" hidden min-[992px]:flex justify-between items-center flex-row-reverse gap-[3rem] text-black">
             <Account/>
             <Link>من نحن</Link>
             <Link>مدونتنا الصحية</Link>

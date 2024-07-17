@@ -8,7 +8,12 @@ function FormSearch() {
                 <div className="label">
                     <span className="label-text text-black">اسم المستشفى</span>
                 </div>
-                <input type="text" placeholder="اسم المستشفى" className="input input-bordered w-full max-w-xs rounded-[29px]" />
+                <div className="input input-bordered flex items-center gap-2 rounded-[29px]">
+                <input type="text" placeholder="اسم المستشفى" className="grow w-full max-w-xs" />
+                <img 
+                    className="h-4 w-4 opacity-70"
+                src={search_icon} alt="search_icon"/>
+                </div>
             </label>
             <label className="form-control w-fit">
                 <div className="label">

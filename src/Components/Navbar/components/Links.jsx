@@ -4,11 +4,11 @@ function Links() {
     return ( 
         <div className=" hidden min-[992px]:flex justify-between items-center flex-row-reverse gap-[3rem]">
             <Account/>
-            <Link>المستشفيات</Link>
-            <Link>العيادات الخارجية</Link>
-            <Link>العروض والتخفيضات</Link>
-            <Link>مدونتنا الصحية</Link>
             <Link>من نحن</Link>
+            <Link>مدونتنا الصحية</Link>
+            <Link>العروض والتخفيضات</Link>
+            <Link>العيادات الخارجية</Link>
+            <Link>المستشفيات</Link>
         </div>
      );
 }

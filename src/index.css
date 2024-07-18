@@ -198,3 +198,24 @@ code {
 /* Side options */
 
 /* Form Sign in */
+
+/* Maps Search */
+.search-tabs {
+  @apply avenir-heavy text-black w-fit flex-between-center gap-4 mt-7 mb-4 mr-5;
+}
+.search-tab {
+  @apply flex-between-center gap-3 p-3 rounded-3xl transition-all duration-700 hover:bg-[--main-color-orange-dark];
+}
+.link-search-tab {
+  @apply flex-between-center gap-3;
+}
+.maps .search-tabs .maps-search {
+  background: var(--main-color-orange-dark) !important;
+}
+.maps .search-tabs .hospital-search {
+  background: var(--main-color-orange) !important;
+}
+.maps .search-tabs .hospital-search:hover {
+  background: var(--main-color-orange-dark) !important;
+}
+/* Maps Search */

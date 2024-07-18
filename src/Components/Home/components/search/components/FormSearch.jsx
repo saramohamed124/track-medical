@@ -38,7 +38,7 @@ function FormSearch() {
                     <option>المخ والأعصاب</option>
                 </select>
             </label>
-           <button className='bg-[--main-color-green]  p-4 rounded-[50%] flex-between-center md:self-end '>
+           <button className='bg-[--main-color-green]  p-4 rounded-[50%] flex-between-center md:self-end butn'>
            <img className='md:w-[60px]' src={search_icon} alt="search_icon"/>
            </button>
         </form>

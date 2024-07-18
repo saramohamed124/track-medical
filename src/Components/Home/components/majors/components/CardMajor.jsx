@@ -4,7 +4,7 @@ import soul_icon from '../assets/icons/soul.svg'
 import teeth_icon from '../assets/icons/teeth.svg'
 function CardMajor() {
     return ( 
-        <div  className='cards-flex'>
+        <div  className='cards-flex '>
             
             <div className="bg-base-100 w-[190px] h-[185px] py-5 px-[20px] flex justify-center items-center gap-5 flex-col box-majors-shadow rounded-[50%]">
                     <img

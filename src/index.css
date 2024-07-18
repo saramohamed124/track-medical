@@ -27,6 +27,7 @@
 body {
   margin: 0;
   font-family: Avenir-Arabic;
+  background: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -74,6 +75,78 @@ code {
 }
 
 .cards-flex {
-  @apply my-4 flex justify-center items-center gap-y-5 gap-x-5 w-full flex-wrap order-2 lg:order-1;
+  @apply my-4 flex justify-center items-center gap-[2rem] w-full flex-wrap order-2 lg:order-1;
   flex: 0 0 100%;
 }
+
+/* Form Sign in */
+
+.signs-bg-linear {
+  background: linear-gradient(
+    to bottom,
+    var(--main-color-green) 0%,
+    var(--main-color-green-half-dark) 26%,
+    var(--main-color-green-dark) 85%
+  );
+}
+
+.signs-bg-linear-choice:hover {
+  background: linear-gradient(
+    to top,
+    var(--main-color-green) 0%,
+    var(--main-color-green-dark) 100%
+  );
+}
+.flex-half-grow {
+  flex: 0 0 50%;
+}
+
+@media (min-width: 700px) {
+  .flex-half-grow-choice {
+    flex: 0 0 50%;
+  }
+}
+@media (max-width: 767px) {
+  .flex-half-grow-choice {
+    flex: 0 !important;
+  }
+  .form-signup .side-option {
+    height: 100% !important;
+  }
+}
+
+.form-signs {
+  @apply signs-bg-linear h-full w-full grid grid-cols-1 grid-rows-1 justify-center items-center text-center p-5 m-auto order-2 md:order-1 py-5 px-3;
+}
+.form-signup {
+  @apply form-signs;
+}
+.form-signup .side-options-parent {
+  height: 100% !important;
+}
+.form-signup .side-options-parent .side-option {
+  height: 50% !important;
+}
+
+.side-signup {
+  height: auto !important;
+}
+
+.form-signup {
+  padding: 20px;
+  height: fit-content !important;
+}
+.input-signin {
+  @apply label-text text-white text-base py-1 m-auto tracking-wider;
+}
+/* Side options */
+.side-options-parent {
+  @apply flex flex-row md:flex-col flex-half-grow-choice order-1 md:order-2;
+}
+.side-option {
+  @apply flex justify-center items-center flex-col gap-2 p-6 flex-half-grow h-[192px] md:h-full lg:h-fit lg:min-h-[50vh] transition-all duration-[0.3s];
+}
+
+/* Side options */
+
+/* Form Sign in */

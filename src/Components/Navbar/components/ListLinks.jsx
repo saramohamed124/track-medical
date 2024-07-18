@@ -5,7 +5,7 @@ function ListLinks() {
     return ( 
         <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content left-0 bg-base-100 avenir-heavy z-[1] mt-3 p-5 shadow flex items-center gap-6 w-[300px] rounded-none border">
+        className="menu menu-sm dropdown-content bg-base-100 avenir-heavy z-[1] mt-3 p-5 shadow flex items-center gap-6 w-[300px] rounded-none border left-[-8px] top-[106%]">
             <Link className="text-black">المستشفيات</Link>
             <Link className="text-black">العيادات الخارجية</Link>
             <Link className="text-black">العروض والتخفيضات</Link>

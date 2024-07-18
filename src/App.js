@@ -11,6 +11,7 @@ import { MapsSearch } from './Pages/MapsSearch';
 import Search from './Components/Home/components/search/Search';
 import SignupHospitals from './Pages/SingupHospitals';
 import SignupMembers from './Pages/SignupMembers';
+import Hospitals from './Pages/Hospitals';
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='/search' element={<Search/>}/>
         <Route path='/maps' element={<MapsSearch/>}/>
+        <Route path='/hospitals' element={<Hospitals/>}/>
         <Route path="/signin-hospitals" element={<SigninHospitals />} />
         <Route path="/signin-members" element={<SigninMember />} />
         <Route path="/signup-hospitals" element={<SignupHospitals />} />

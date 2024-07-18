@@ -36,12 +36,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/* Global Classes */
 .container {
   @apply ps-4 pe-4 m-auto;
 }
+
+.text-webkit-center {
+  text-align: -webkit-center;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: black !important;
+}
+.swiper-slide {
+  width: fit-content !important;
+}
+@media (min-width: 1024px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+}
+@media (min-width: 700px) {
+  .swiper-slide {
+    width: fit-content !important;
+  }
+}
+@media (max-width: 650px) {
+  .swiper-wrapper {
+    gap: 30px;
+  }
+}
+
 .flex-between-center {
   @apply flex justify-between items-center;
 }
+/* Global Classes */
 
 .navbarend {
   @apply navbar-end flex justify-between w-full;
@@ -69,7 +99,9 @@ code {
 .box-majors-shadow {
   box-shadow: 1px -1px 8px #eee, -2px 1px 8px 1px #eee, 1px 1px 8px #eee;
 }
-
+.cards-majors {
+  justify-content: space-evenly !important;
+}
 .box {
   transition: all 0.3s ease; /* Transition effect for all properties */
 }
@@ -93,7 +125,9 @@ code {
   @apply my-4 flex justify-center items-center gap-[2rem] w-full flex-wrap order-2 lg:order-1;
   flex: 0 0 100%;
 }
-
+.cards-hospital {
+  @apply justify-center md:justify-start;
+}
 .heading-major-card {
   @apply w-[8rem] rounded-3xl text-white bg-[--main-color-green] p-2 avenir-heavy hidden justify-center items-center gap-4 text-base mx-4 opacity-0 transition-opacity duration-700 ease-in-out;
 }

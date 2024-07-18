@@ -4,7 +4,7 @@ import { FormSignupHospitals } from '../Components/Sign/signup/components/hospit
 
 const SignupHospitals = () => {
     return (
-        <div className='flex flex-col md:flex-row'>
+        <div className='flex flex-col md:flex-row signup-hospitals'>
             <FormSignupHospitals />
             <SideOptionsSignup />
         </div>

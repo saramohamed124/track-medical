@@ -120,6 +120,8 @@ code {
 }
 .form-signup {
   @apply form-signs;
+  margin: 0;
+  height: auto !important;
 }
 .form-signup .side-options-parent {
   height: 100% !important;
@@ -132,10 +134,6 @@ code {
   height: auto !important;
 }
 
-.form-signup {
-  padding: 20px;
-  height: fit-content !important;
-}
 .input-signin {
   @apply label-text text-white text-base py-1 m-auto tracking-wider;
 }

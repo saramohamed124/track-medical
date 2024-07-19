@@ -3,7 +3,7 @@ import search_icon from '../assets/icons/search_icon.svg'
 function FormSearch() {
     return ( 
         <>
-                <form className="bg-[--main-color-orange] pt-3 pb-8 px-12 rounded-md md:rounded-[98px] flex-between-center avenir-book text-center gap-5 flex-col md:flex-row">
+                <form className="form-search">
             <label className="form-control w-full max-w-xs">
                 <div className="label">
                     <span className="label-text text-black">اسم المستشفى</span>

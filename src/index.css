@@ -67,10 +67,14 @@ code {
     gap: 30px;
   }
 }
+.flex-box-center {
+  @apply flex justify-center items-center;
+}
 
 .flex-between-center {
   @apply flex justify-between items-center;
 }
+
 /* Global Classes */
 
 .navbarend {
@@ -95,7 +99,14 @@ code {
 .checkbox {
   --chkbg: black;
 }
-
+/* Search */
+.form-search {
+  @apply bg-[--main-color-orange] pt-3 pb-8 px-12 rounded-md md:rounded-[98px] flex-between-center avenir-book text-center gap-5 flex-col md:flex-row;
+}
+.search-company {
+  @apply py-3 px-4 my-8 mx-auto w-fit gap-5;
+}
+/* Search */
 .box-majors-shadow {
   box-shadow: 1px -1px 8px #eee, -2px 1px 8px 1px #eee, 1px 1px 8px #eee;
 }
@@ -122,7 +133,7 @@ code {
 }
 
 .cards-flex {
-  @apply my-4 flex justify-center items-center gap-[2rem] w-full flex-wrap order-2 lg:order-1;
+  @apply my-4 flex-box-center gap-[2rem] w-full flex-wrap order-2 lg:order-1;
   flex: 0 0 100%;
 }
 .cards-hospital {
@@ -133,7 +144,7 @@ code {
 }
 
 .card-major {
-  @apply bg-base-100 w-[190px] h-[185px] py-5 px-[20px] flex justify-center items-center gap-5 flex-col box-majors-shadow rounded-[50%] transition-all duration-700;
+  @apply bg-base-100 w-[190px] h-[185px] py-5 px-[20px] flex-box-center gap-5 flex-col box-majors-shadow rounded-[50%] transition-all duration-700;
 }
 
 .card-major:hover .heading-major-card {
@@ -226,7 +237,7 @@ code {
   @apply flex flex-row md:flex-col flex-half-grow-choice order-1 md:order-2;
 }
 .side-option {
-  @apply flex justify-center items-center flex-col gap-2 p-6 flex-half-grow h-[192px] md:h-full lg:h-fit lg:min-h-[50vh] transition-all duration-[0.3s];
+  @apply flex-box-center flex-col gap-2 p-6 flex-half-grow h-[192px] md:h-full lg:h-fit lg:min-h-[50vh] transition-all duration-[0.3s];
 }
 
 /* Side options */
@@ -253,3 +264,24 @@ code {
   background: var(--main-color-orange-dark) !important;
 }
 /* Maps Search */
+
+/* Hospitals */
+.card-hospitals .swiper-wrapper {
+  @apply flex-nowrap lg:flex-wrap gap-3 lg:gap-5;
+}
+.cards-width {
+  display: none !important;
+}
+@media (max-width: 1023px) and (min-width: 787px) {
+  .cards-width {
+    display: block;
+  }
+}
+.btn-prev-next {
+  @apply px-4 py-2 mx-1 bg-[--main-color-orange] text-white rounded-[40px] text-sm lg:text-xl;
+}
+
+.btn-numbers {
+  @apply h-[2.2rem] px-[13px] py-0 mx-1 bg-white text-black rounded-[50%] border;
+}
+/* Hospitals */

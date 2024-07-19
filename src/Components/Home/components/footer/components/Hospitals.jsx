@@ -7,7 +7,7 @@ function Hospitals() {
                 <li className="whitespace-nowrap">مستشفيات مكة المكرمة</li>
                 <li className="whitespace-nowrap">مستشفيات المدينة المنورة</li>
             </ul>
-            <ul className="flex justify-center items-center gap-3 flex-col w-full text-sm">
+            <ul className="flex-box-center gap-3 flex-col w-full text-sm">
             <li className="whitespace-nowrap">مستشفيات الرياض</li>
             <li className="whitespace-nowrap">مستشفيات جدة</li>
             <li className="whitespace-nowrap">مستشفيات الدمام</li>

@@ -12,6 +12,7 @@ import madina_img from '../assets/imgs/madina.jpg';
 import mekka_img from '../assets/imgs/mekka.jpg';
 import riyadh_img from '../assets/imgs/riyadh.jpg';
 import { Navigation, Pagination } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
 // Install Swiper modules
 SwiperCore.use([Navigation, Pagination]);
@@ -45,7 +46,7 @@ function Cards() {
               <img className='w-full h-[190px]' src={riyadh_img} alt="الرياض" />
             </figure>
             <div className="avenir-heavy w-full text-center card-body bg-[--main-color-orange] rounded-br-md rounded-bl-md">
-              <h2 className="card-title text-black flex justify-center items-center">الرياض</h2>
+              <Link to={'/hospitals-cities'} className="card-title text-black flex-box-center">الرياض</Link>
             </div>
           </div>
         </SwiperSlide>
@@ -55,7 +56,7 @@ function Cards() {
               <img className='w-full h-[190px]' src={gadah_img} alt="جدة" />
             </figure>
             <div className="avenir-heavy w-full text-center card-body bg-[--main-color-orange] rounded-br-md rounded-bl-md">
-              <h2 className="card-title text-black flex justify-center items-center">جدة</h2>
+              <h2 className="card-title text-black flex-box-center">جدة</h2>
             </div>
           </div>
         </SwiperSlide>
@@ -65,7 +66,7 @@ function Cards() {
               <img className='w-full h-[190px]' src={dammam_img} alt="الدمام" />
             </figure>
             <div className="avenir-heavy w-full text-center card-body bg-[--main-color-orange] rounded-br-md rounded-bl-md">
-              <h2 className="card-title text-black flex justify-center items-center">الدمام</h2>
+              <h2 className="card-title text-black flex-box-center">الدمام</h2>
             </div>
           </div>
         </SwiperSlide>
@@ -75,7 +76,7 @@ function Cards() {
               <img className='w-full h-[190px]' src={mekka_img} alt="مكة المكرمة" />
             </figure>
             <div className="avenir-heavy w-full text-center card-body bg-[--main-color-orange] rounded-br-md rounded-bl-md">
-              <h2 className="card-title text-black flex justify-center items-center">مكة المكرمة</h2>
+              <h2 className="card-title text-black flex-box-center">مكة المكرمة</h2>
             </div>
           </div>
         </SwiperSlide>
@@ -85,7 +86,7 @@ function Cards() {
               <img className='w-full h-[190px]' src={madina_img} alt="المدينة المنورة" />
             </figure>
             <div className="avenir-heavy w-full text-center card-body bg-[--main-color-orange] rounded-br-md rounded-bl-md">
-              <h2 className="card-title text-black flex justify-center items-center">المدينة المنورة</h2>
+              <h2 className="card-title text-black flex-box-center">المدينة المنورة</h2>
             </div>
           </div>
         </SwiperSlide>

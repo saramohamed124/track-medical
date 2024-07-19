@@ -58,7 +58,7 @@ export function FormSignupHospitals() {
           </label>
        
           
-          <label className='avenir-book text-white flex justify-center items-center gap-4 my-4 lg:translate-x-[0%] lg:translate-y-[-350%] lg:row-[5] lg:col-[2]'>
+          <label className='avenir-book text-white flex-box-center gap-4 my-4 lg:translate-x-[0%] lg:translate-y-[-350%] lg:row-[5] lg:col-[2]'>
             <input type="checkbox" className="checkbox border-2 rounded-none bg-white text-base" />
             <span>الموافقة على الشروط والأحكام</span>
           </label>

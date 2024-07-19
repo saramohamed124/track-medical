@@ -21,7 +21,7 @@ const FormSignupMembers = () => {
                 <span className="text-[#9ca3af]">966+</span>
             </div>
         </label>
-        <label className='avenir-book text-white flex justify-center items-center gap-4 my-4'>
+        <label className='avenir-book text-white flex-box-center gap-4 my-4'>
             <input type="checkbox" defaultChecked className="checkbox border-2 rounded-none bg-white" />
             <span>الموافقة على الشروط والأحكام</span>
         </label>

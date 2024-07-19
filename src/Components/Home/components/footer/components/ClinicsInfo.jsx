@@ -7,7 +7,7 @@ function ClinicsInfo() {
                 <li>الطب الباطني</li>
                 <li>العيون</li>
             </ul>
-            <ul className="flex justify-center items-center gap-3 flex-col text-sm">
+            <ul className="flex-box-center gap-3 flex-col text-sm">
             <li>جراحة القلب</li>
             <li>نساء و الولادة</li>
             <li>المخ والاعصاب</li>

@@ -174,6 +174,19 @@ code {
   opacity: 1;
 }
 
+/* Form Sign up */
+
+.signup-hospitals .side-signup {
+  @apply order-1 lg:order-2 flex-row lg:flex-col;
+}
+.signup-hospitals .side-signup .signs-bg-linear {
+  height: auto !important;
+}
+.signup-hospitals .form-signup {
+  @apply order-2 lg:order-1;
+}
+/* Form Sign up */
+
 /* Form Sign in */
 
 .signs-bg-linear {

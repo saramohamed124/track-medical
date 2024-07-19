@@ -57,7 +57,8 @@ const CardGrid = () => {
               </div>
             </SwiperSlide>
           ))}
-         
+         <SwiperSlide></SwiperSlide>
+         <SwiperSlide></SwiperSlide>
         </Swiper>
       </div>
       <div className="flex-box-center my-8 avenir-heavy">

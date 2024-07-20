@@ -57,6 +57,11 @@ code {
     display: none !important;
   }
 }
+.hospital-profile .swiper-button-prev,
+.hospital-profile .swiper-button-next {
+  display: block !important;
+}
+
 @media (min-width: 700px) {
   .swiper-slide {
     width: fit-content !important;
@@ -67,6 +72,10 @@ code {
     gap: 30px;
   }
 }
+.hospital-profile .swiper-wrapper {
+  gap: 0px !important;
+}
+
 .flex-box-center {
   @apply flex justify-center items-center;
 }

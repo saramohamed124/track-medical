@@ -61,7 +61,6 @@ code {
 .hospital-profile .swiper-button-next {
   display: block !important;
 }
-
 @media (min-width: 700px) {
   .swiper-slide {
     width: fit-content !important;
@@ -307,3 +306,31 @@ code {
   @apply h-[2.2rem] px-[13px] py-0 mx-1 bg-white text-black rounded-[50%] border;
 }
 /* Hospitals */
+
+/* Hospital profile */
+@media (min-width: 1135px) {
+  .hospital .container {
+    @apply mx-0;
+  }
+  .hospital-info {
+    width: 100%;
+  }
+  .tabs-hospital a {
+    @apply whitespace-pre;
+  }
+  .hospital-desc {
+    @apply col-[1] row-[2];
+  }
+}
+.hospital-description:has(.major-hospital) {
+  @apply lg:row-[2/3];
+}
+@media (max-width: 1135px) {
+  .hospital-desc {
+    @apply row-[1];
+  }
+}
+.major-hospital .swiper > div {
+  @apply md:grid md:grid-cols-3 gap-6 p-3 w-[15rem] md:w-auto;
+}
+/* Hospital profile */

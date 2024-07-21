@@ -9,7 +9,7 @@ import whatsapp_icon from '../assets/icons/whatsapp_icon.svg'
 const LikeBtns = () => {
   return (
     <div>
-      <ul className='bg-gray-200 py-3 px-6 rounded-full flex-between-center gap-5 w-fit mt-10 mb-4 mx-auto lg:col-[1] lg:row-[1]'>
+      <ul className='bg-gray-200 py-3 px-6 rounded-full flex-between-center gap-5 w-fit mt-10 mb-4 mx-auto row-[]'>
       <li>
             <img src={favorite_icon} alt='favorite_icon'/>
         </li>

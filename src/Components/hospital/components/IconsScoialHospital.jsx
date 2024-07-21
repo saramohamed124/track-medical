@@ -10,7 +10,7 @@ import twitter_icon from '../assets/icons/twitte_icon.svg'
 
 const IconsScoialHospital = () => {
   return (
-      <ul className='flex items-center gap-2 mt-2'>
+      <ul className='flex items-center gap-2 mt-2 '>
         <li>
            <img src={snapshat_icon} alt='snapchat icon'/>
         </li>

@@ -34,15 +34,8 @@ function CardMajor() {
           },
         }}
       >
-        <SwiperSlide>
-        <div className="card-major">
-                    <img
-                    className='w-[100px] max-h-[80px]'
-                    src={teeth_icon}
-                    alt="teeth" />
-                    <h2 className="heading-major-card">الأسنان</h2>
-            </div>
-                </SwiperSlide>
+      
+        
         <SwiperSlide>
         <div className="card-major">
                     <img
@@ -58,6 +51,15 @@ function CardMajor() {
                     className='w-[100px] max-h-[80px]'
                     src={soul_icon}
                     alt="soul" />
+                    <h2 className="heading-major-card">الطب النفسي</h2>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+        <div className="card-major">
+                    <img
+                    className='w-[100px] max-h-[80px]'
+                    src={teeth_icon}
+                    alt="teeth" />
                     <h2 className="heading-major-card">الطب النفسي</h2>
             </div>
         </SwiperSlide>

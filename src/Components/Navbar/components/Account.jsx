@@ -3,7 +3,7 @@ import account_icon from '../assets/icons/user.svg'
 import SignList from './SignList';
 const Account = () => {
     return (
-        <div className='px-4'>
+        <div className='px-4 z-50'>
             <details className="dropdown">
             <summary className="btn m-1">
             <img src={account_icon} alt='account-icon'/>

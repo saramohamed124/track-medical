@@ -14,8 +14,9 @@ import SignupMembers from './Pages/SignupMembers';
 import Hospitals from './Pages/Hospitals';
 import HospitalsCities from './Pages/HospitalsCities';
 import Hospital from './Pages/Hospital';
-import Tab1 from './Components/hospital/components/Tab1';
-import Tab2 from './Components/hospital/components/Tab2';
+import AboutUsHospital from './Components/hospital/components/AboutUsHospital';
+import MajorsHospital from './Components/hospital/components/MajorsHospital';
+import InsuranceCompanies from './Components/hospital/components/InsuranceCompanies';
 
 function App() {
   const location = useLocation();
@@ -30,8 +31,10 @@ function App() {
         <Route path='/hospitals' element={<Hospitals/>}/>
         <Route path='/hospitals-cities' element={<HospitalsCities/>}/>
         <Route path='/hospital-profile' element={<Hospital/>}>
-        <Route path="about-us" element={<Tab1 />} />
-        <Route path="majors" element={<Tab2 />} />
+        <Route path="/hospital-profile" element={<AboutUsHospital />} />
+        <Route path="about-us" element={<AboutUsHospital />} />
+        <Route path="majors" element={<MajorsHospital />} />
+        <Route path="insurance-companies" element={<InsuranceCompanies />} />
         </Route>
         <Route path="/signin-hospitals" element={<SigninHospitals />} />
         <Route path="/signin-members" element={<SigninMember />} />

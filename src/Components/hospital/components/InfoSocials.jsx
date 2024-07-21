@@ -9,7 +9,8 @@ import email_icon from '../assets/icons/email_icon.svg'
 
 const InfoSocials = () => {
   return (
-    <div className='bg-[--main-color-green] p-4 w-fit rounded-lg lg:row-[1/4] lg:col-[2]'>
+    <div className='bg-[--main-color-green] p-4 w-fit rounded-lg row-[3] md:place-self-start md:row-[1/3] md:col-[3] '>
+      <div>
       <ul className='flex items-center gap-4 flex-col ' style={{placeItems:'flex-start'}}>
         <li className='flex items-center gap-3 avenir-book text-xl text-white'>
           <div className='img'>
@@ -37,6 +38,7 @@ const InfoSocials = () => {
           <p>info@mashfa.com</p>
         </li>
       </ul>
+      </div>
       <IconsScoialHospital/>
     </div>
   )

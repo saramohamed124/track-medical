@@ -7,4 +7,16 @@ const api = axios.create({
   }
 });
 
+
+// register Hospital
+export const registerHospital = (data) => api.post('/signup-hospitals',data)
+// Login Hospitals
+export const logInHospital = (data) => api.post('/login-hospitals',data)
+// register Member
+export const registerMember = (data) => api.post('/singup-member',data)
+// Login Member
+export const logInMember = (data) => api.post('/login-member',data)
+// OTP 
+export const verifyOTP = (data) => api.post('/verify-otp',data)
+
 export default api;

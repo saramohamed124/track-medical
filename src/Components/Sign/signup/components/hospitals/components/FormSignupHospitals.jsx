@@ -5,29 +5,45 @@ import { registerHospital } from '../../../../../../api/api';
 
 export function FormSignupHospitals() {
   // Call Values From AuthHospitalSignUP
-  const {
-    nameAr,setNameAr,
-    nameEn,setNameEn,
-    email,setEmail,
-    phone,setPhone,
-    city,setCity,
-    description,setDescription,
-    googleMapLink,setGoogleMapLink
-  } = useContext(AuthHospitalProviderSignUp)
+  // const {
+  //   nameAr,setNameAr,
+  //   nameEn,setNameEn,
+  //   email,setEmail,
+  //   phone,setPhone,
+  //   city,setCity,
+  //   description,setDescription,
+  //   googleMapLink,setGoogleMapLink
+  // } = useContext(AuthHospitalProviderSignUp)
+  // // Regex Here
   // Regex Here
-  
-  // Handle Submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = {
-      nameAr,nameEn,email,phone,city,description,googleMapLink
-    }
-    try{
-      await registerHospital(formData);
-    }catch(error){
-      console.log(error);
-    }
-  }
+  // const nameArRegex = /^[\u0600-\u06FF\s]+$/;
+  // const nameEnRegex = /^[A-Za-z\s]+$/;
+  // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // const phoneRegex = /^[0-9]{10,15}$/;
+
+  // const validate = () => {
+  //   const newErrors = {};
+  //   if (!nameArRegex.test(nameAr)) newErrors.nameAr = "الاسم باللغة العربية غير صحيح";
+  //   if (!nameEnRegex.test(nameEn)) newErrors.nameEn = "الاسم باللغة الإنجليزية غير صحيح";
+  //   if (!emailRegex.test(email)) newErrors.email = "البريد الإلكتروني غير صحيح";
+  //   if (!phoneRegex.test(phone)) newErrors.phone = "رقم الجوال غير صحيح";
+  //   setErrors(newErrors);
+  //   return Object.keys(newErrors).length === 0;
+  // };
+
+  // // Handle Submit
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  // if (!validate()) return;
+  //   const formData = {
+  //     nameAr,nameEn,email,phone,city,description,googleMapLink
+  //   }
+  //   try{
+  //     await registerHospital(formData);
+  //   }catch(error){
+  //     console.log(error);
+  //   }
+  // }
   return (
     <div className="form-signup h-fit lg:h-full bg-gradient-to-br from-green-400 to-teal-500 p-5 shadow-md">
       <div className='p-5'>

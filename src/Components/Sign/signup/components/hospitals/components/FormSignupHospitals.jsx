@@ -44,16 +44,7 @@ export function FormSignupHospitals() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^((?:[+?0?0?966]+)(?:\s?\d{2})(?:\s?\d{7}))$/;
 
-  const handleChange = (e) => {
-    const selectedValue = e.target.value;
-    // Validate the selected value
-    if (citiesData.includes(selectedValue) && nameArRegex.test(selectedValue)) {
-      setCity(selectedValue);
-    } else {
-      // Optionally handle invalid selection
-      setErrorCity(true);
-    }
-  };
+  
   const validate = () => {
     const newErrors = {};
     if (!nameArRegex.test(nameAr)) newErrors.nameAr = "الاسم باللغة العربية غير صحيح";
@@ -132,15 +123,15 @@ export function FormSignupHospitals() {
             <select 
               className="select select-bordered avenir-book bg-white text-gray-500 w-full max-w-xs" 
               value={city}
-              onChange={handleChange}
+              onChange={(e)=> setCity(e.target.value)}
               >
-              <option value={city}>اختر المدينة أو المنطقة</option>
+              <option >اختر المدينة أو المنطقة</option>
               {citiesData.map((e, index) => (
-                <option key={index} value={e}>{e}</option>
+                <option key={index} value={e} onChange={(e)=> setCity(e.target.value)}>{e}</option>
               ))}
             </select>
           </label>
-          {errors.city && <span className="text-red-500">{errors.city}</span>}
+          {/* {errors.city && (<span className='text-red-300'>اختر مدينة</span>)} */}
           <label className="form-control w-full max-w-xs">
             <div>
               <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>رقم الجوال</span>
@@ -195,6 +186,7 @@ export function FormSignupHospitals() {
           <label className='avenir-book text-white flex-box-center gap-4 my-4 lg:translate-x-[0%] lg:translate-y-[-350%] lg:row-[5] lg:col-[2]'>
             <input type="checkbox" className="checkbox border-2 rounded-none bg-white text-base" />
             <span>الموافقة على الشروط والأحكام</span>
+            {errors.terms && (<span className="text-red-500">{errors.terms}</span>)}
           </label>
           <button type="submit" className="btn mt-9 px-9 rounded-md text-black hover:bg-opacity-5 bg-[--main-bg-color-btn] lg:row-[5] lg:col-[1/3]">إرسال الطلب</button>
         </form>

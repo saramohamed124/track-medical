@@ -42,7 +42,7 @@ export function FormSignupHospitals() {
   const nameArRegex = /^[\u0600-\u06FF\s]+$/;
   const nameEnRegex = /^[A-Za-z\s]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^((?:[+?0?0?966]+)(?:\s?\d{2})(?:\s?\d{7}))$/;
+  const phoneRegex = /^(?:\+966|00966|966)?\s?\d{2}\s?\d{10}$/;
 
   
   const validate = () => {

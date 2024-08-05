@@ -1,10 +1,30 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import { AuthContext } from '../../../../../../context/auth/hospitals/AuthHospitalProviderSignUp';
 import { registerHospital } from '../../../../../../api/api';
+import 'leaflet/dist/leaflet.css';
+import { CitiesData } from './cities';
+
+
+function LocationMarker({ setMapLocation }) {
+  const [position, setPosition] = useState(null);
+
+  useMapEvents({
+    click(e) {
+      setPosition(e.latlng);
+      setMapLocation({ lat: e.latlng.lat, long: e.latlng.lng });
+    }
+  });
+
+  return position === null ? null : (
+    <Marker position={position}></Marker>
+  );
+}
 
 export function FormSignupHospitals() {
-  const [error, setErrors] = React.useState({});
+  const [errors, setErrors] = useState({});
+  const citiesData = [...CitiesData]
   const {
     nameAr, setNameAr,
     nameEn, setNameEn,
@@ -12,15 +32,28 @@ export function FormSignupHospitals() {
     phone, setPhone,
     city, setCity,
     description, setDescription,
-    googleMapLink, setGoogleMapLink
+    googleMapLink, setGoogleMapLink,
   } = useContext(AuthContext);
+  const [cityerror,setErrorCity] = useState(false)
 
-  // Regex Here
+  const [mapLocation, setMapLocation] = useState({ lat: 0, long: 0 });
+
+  // Regex patterns for validation
   const nameArRegex = /^[\u0600-\u06FF\s]+$/;
   const nameEnRegex = /^[A-Za-z\s]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^[0-9]{10,15}$/;
+  const phoneRegex = /^((?:[+?0?0?966]+)(?:\s?\d{2})(?:\s?\d{7}))$/;
 
+  const handleChange = (e) => {
+    const selectedValue = e.target.value;
+    // Validate the selected value
+    if (citiesData.includes(selectedValue) && nameArRegex.test(selectedValue)) {
+      setCity(selectedValue);
+    } else {
+      // Optionally handle invalid selection
+      setErrorCity(true);
+    }
+  };
   const validate = () => {
     const newErrors = {};
     if (!nameArRegex.test(nameAr)) newErrors.nameAr = "الاسم باللغة العربية غير صحيح";
@@ -35,18 +68,6 @@ export function FormSignupHospitals() {
     e.preventDefault();
     if (!validate()) return;
 
-    // Parse googleMapLink to get lat and long
-    const mapLocation = {};
-    const regex = /@([-+]?[0-9]*\.?[0-9]+),([-+]?[0-9]*\.?[0-9]+)/;
-    const match = googleMapLink.match(regex);
-    if (match) {
-      mapLocation.lat = parseFloat(match[1]);
-      mapLocation.long = parseFloat(match[2]);
-    } else {
-      mapLocation.lat = 0; // Default or handle accordingly
-      mapLocation.long = 0; // Default or handle accordingly
-    }
-
     const formData = {
       type: "Hospital",
       arName: nameAr,
@@ -59,9 +80,17 @@ export function FormSignupHospitals() {
     };
 
     try {
-      await registerHospital(formData);
+      const response = await registerHospital(formData);
+      console.log('Form submitted successfully:', response.data);
+      setNameAr('');
+      setNameEn('');
+      setEmail('');
+      setCity('');
+      setPhone('');
+      setDescription('');
+      setGoogleMapLink('');
     } catch (error) {
-      console.log(error);
+      console.error('Form submission error:', error);
     }
   };
 
@@ -81,7 +110,7 @@ export function FormSignupHospitals() {
               value={nameAr} 
               onChange={(e) => setNameAr(e.target.value)} 
             />
-            {error.nameAr && <span className="text-red-500">{error.nameAr}</span>}
+            {errors.nameAr && <span className="text-red-500">{errors.nameAr}</span>}
           </label>
           <label className="form-control w-full max-w-xs">
             <div>
@@ -94,7 +123,7 @@ export function FormSignupHospitals() {
               value={nameEn} 
               onChange={(e) => setNameEn(e.target.value)} 
             />
-            {error.nameEn && <span className="text-red-500">{error.nameEn}</span>}
+            {errors.nameEn && <span className="text-red-500">{errors.nameEn}</span>}
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
@@ -103,16 +132,15 @@ export function FormSignupHospitals() {
             <select 
               className="select select-bordered avenir-book bg-white text-gray-500 w-full max-w-xs" 
               value={city}
-              onChange={(e) => setCity(e.target.value)}
-            >
-              <option value=''>اختر المدينة أو المنطقة</option>
-              <option value='الرياض'>الرياض</option>
-              <option value='مكة المكرمة'>مكة المكرمة</option>
-              <option value='جدة'>جدة</option>
-              <option value='المدينة المنورة'>المدينة المنورة</option>
-              <option value='الدمام'>الدمام</option>
+              onChange={handleChange}
+              >
+              <option value={city}>اختر المدينة أو المنطقة</option>
+              {citiesData.map((e, index) => (
+                <option key={index} value={e}>{e}</option>
+              ))}
             </select>
           </label>
+          {errors.city && <span className="text-red-500">{errors.city}</span>}
           <label className="form-control w-full max-w-xs">
             <div>
               <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>رقم الجوال</span>
@@ -124,7 +152,7 @@ export function FormSignupHospitals() {
               value={phone} 
               onChange={(e) => setPhone(e.target.value)} 
             />
-            {error.phone && <span className="text-red-500">{error.phone}</span>}
+            {errors.phone && <span className="text-red-500">{errors.phone}</span>}
           </label>
           <label className="form-control w-full max-w-xs lg:row-[3]">
             <div>
@@ -137,7 +165,7 @@ export function FormSignupHospitals() {
               value={email} 
               onChange={(e) => setEmail(e.target.value)} 
             />
-            {error.email && <span className="text-red-500">{error.email}</span>}
+            {errors.email && <span className="text-red-500">{errors.email}</span>}
           </label>
           <label className="form-control w-full max-w-xs lg:row-[3/5]">
             <div>
@@ -154,13 +182,15 @@ export function FormSignupHospitals() {
             <div>
               <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>الموقع على الخريطة (اختياري)</span>
             </div>
-            <input 
-              type="text" 
-              placeholder="رابط الموقع على الخريطة" 
-              className="input input-bordered bg-white w-full max-w-xs avenir-book" 
-              value={googleMapLink} 
-              onChange={(e) => setGoogleMapLink(e.target.value)} 
-            />
+            <div className="w-full lg:col-span-2 h-64">
+              <MapContainer center={[24.7136, 46.6753]} zoom={10} style={{ height: "100%", width: "100%" }}>
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                <LocationMarker setMapLocation={setMapLocation} />
+              </MapContainer>
+            </div>
           </label>
           <label className='avenir-book text-white flex-box-center gap-4 my-4 lg:translate-x-[0%] lg:translate-y-[-350%] lg:row-[5] lg:col-[2]'>
             <input type="checkbox" className="checkbox border-2 rounded-none bg-white text-base" />
@@ -171,4 +201,4 @@ export function FormSignupHospitals() {
       </div>
     </div>
   );
-};
+}

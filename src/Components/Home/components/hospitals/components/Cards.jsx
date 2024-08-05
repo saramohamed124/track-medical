@@ -41,7 +41,7 @@ function Cards() {
         }}
       >
         <SwiperSlide>
-          <div className="card card-compact bg-base-100 w-[200px] shadow-xl rounded-tr-md rounded-tl-md">
+          <div className="card card-compact bg-white w-[200px] shadow-xl rounded-tr-md rounded-tl-md">
             <figure>
               <img className='w-full h-[190px]' src={riyadh_img} alt="الرياض" />
             </figure>
@@ -51,7 +51,7 @@ function Cards() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="card card-compact bg-base-100 w-[200px] shadow-xl rounded-tr-md rounded-tl-md">
+          <div className="card card-compact bg-white w-[200px] shadow-xl rounded-tr-md rounded-tl-md">
             <figure>
               <img className='w-full h-[190px]' src={gadah_img} alt="جدة" />
             </figure>
@@ -61,7 +61,7 @@ function Cards() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="card card-compact bg-base-100 w-[200px] shadow-xl rounded-tr-md rounded-tl-md">
+          <div className="card card-compact bg-white w-[200px] shadow-xl rounded-tr-md rounded-tl-md">
             <figure>
               <img className='w-full h-[190px]' src={dammam_img} alt="الدمام" />
             </figure>
@@ -71,7 +71,7 @@ function Cards() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="card card-compact bg-base-100 w-[200px] shadow-xl rounded-tr-md rounded-tl-md">
+          <div className="card card-compact bg-white w-[200px] shadow-xl rounded-tr-md rounded-tl-md">
             <figure>
               <img className='w-full h-[190px]' src={mekka_img} alt="مكة المكرمة" />
             </figure>
@@ -81,7 +81,7 @@ function Cards() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="card card-compact bg-base-100 w-[200px] shadow-xl rounded-tr-md rounded-tl-md">
+          <div className="card card-compact bg-white w-[200px] shadow-xl rounded-tr-md rounded-tl-md">
             <figure>
               <img className='w-full h-[190px]' src={madina_img} alt="المدينة المنورة" />
             </figure>

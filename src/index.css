@@ -107,6 +107,10 @@ code {
 .checkbox {
   --chkbg: black;
 }
+.checkbox {
+  --chkfg: white;
+}
+
 /* Search */
 .form-search {
   @apply bg-[--main-color-orange] pt-3 pb-8 px-12 rounded-md md:rounded-[98px] flex-between-center avenir-book text-center gap-5 flex-col md:flex-row;
@@ -152,7 +156,7 @@ code {
 }
 
 .card-major {
-  @apply bg-base-100 w-[190px] h-[185px] py-5 px-[20px] flex-box-center gap-5 flex-col box-majors-shadow rounded-[50%] transition-all duration-700;
+  @apply bg-white w-[190px] h-[185px] py-5 px-[20px] flex-box-center gap-5 flex-col box-majors-shadow rounded-[50%] transition-all duration-700;
 }
 
 .card-major:hover .heading-major-card {
@@ -194,7 +198,11 @@ code {
   @apply order-2 lg:order-1;
 }
 /* Form Sign up */
-
+/*btn sign  */
+.btn-signs {
+  @apply btn mt-9 px-9 rounded-md bg-[--main-bg-color-btn] text-black hover:bg-opacity-5;
+}
+/*btn sign  */
 /* Form Sign in */
 
 .signs-bg-linear {

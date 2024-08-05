@@ -10,9 +10,9 @@ function FormOtp() {
             <p className="input-signin">سيصلك كود تأكيد حسابي في رسالة نصية على
                 رقم جوالك الذي ادخلته مسبقا</p>
             </div>
-            <input type="text" placeholder="كود من 6 ارقام" className="input input-bordered w-[90%] m-auto max-w-xs avenir-book" />
+            <input type="text" placeholder="كود من 6 ارقام" className="input input-bordered bg-white w-[90%] m-auto max-w-xs avenir-book" />
         </label>
-        <button className="btn mt-9 px-9 rounded-md text-black">تسجيل الدخول</button>
+        <button className="btn-signs">تسجيل الدخول</button>
         </form>
         </div>
     </div>

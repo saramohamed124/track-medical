@@ -8,7 +8,7 @@ const Account = () => {
             <summary className="btn m-1">
             <img src={account_icon} alt='account-icon'/>
             </summary>
-                <ul className="absolute top-[122%] left-[-24px] bg-base-100 p-4 shadow">
+                <ul className="absolute top-[122%] left-[-24px] bg-white p-4 shadow">
                     <SignList/>
                 </ul>
             </details>

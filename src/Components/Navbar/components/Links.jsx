@@ -7,7 +7,7 @@ function Links() {
             <Link className="relative navlinks">من نحن</Link>
             <Link className="relative navlinks">مدونتنا الصحية</Link>
             <Link className="relative navlinks">العروض والتخفيضات</Link>
-            <Link className="relative navlinks">العيادات الخارجية</Link>
+            <Link to={'/clinics-home'} className="relative navlinks">العيادات الخارجية</Link>
             <Link to={'/hospitals'} className="relative navlinks">المستشفيات</Link>
         </div>
      );

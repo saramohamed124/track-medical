@@ -7,7 +7,7 @@ const SearchCompanies = () => {
     <div className='form-search search-company'>
         <p className='avenir-heavy text-black'>شركات التأمين التابع لها</p>
         <label className="form-control w-fit">
-            <select className="select select-bordered rounded-md w-[15.5rem] avenir-book text-gray-500" defaultValue={'اختر شركات التأمين'}>
+            <select className="select select-bordered rounded-md w-[15.5rem] avenir-book bg-white text-gray-500" defaultValue={'اختر شركات التأمين'}>
                 <option >اختر شركات التأمين</option>
                 <option>بوبا</option>
                 <option>التعاونية</option>

@@ -10,12 +10,12 @@ function FormSigninMembers() {
             <div className="label avenir-heavy">
                 <span className="input-signin">ادخل رقم جوالك</span>
             </div>
-            <div className="input input-bordered flex items-center gap-2 avenir-book">
+            <div className="input input-bordered bg-white flex items-center gap-2 avenir-book">
                 <input type="text" placeholder="رقم الجوال" className="grow w-full max-w-xs" />
                 <span className="text-[#9ca3af]">966+</span>
                 </div>
                 </label>
-        <button className="btn mt-9 px-9 rounded-md text-black" onClick={e=>e.preventDefault()}>
+        <button className="btn-signs" onClick={e=>e.preventDefault()}>
             <Link to={'/otp-code'}>تسجيل الدخول
             </Link>
         </button>

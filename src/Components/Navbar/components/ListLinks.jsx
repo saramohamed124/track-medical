@@ -5,9 +5,9 @@ function ListLinks() {
     return ( 
         <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content z-50 bg-base-100 avenir-heavy mt-3 p-5 shadow flex items-center gap-6 w-[300px] rounded-none border left-[-8px] top-[106%]">
+        className="menu menu-sm dropdown-content z-50 bg-white avenir-heavy mt-3 p-5 shadow flex items-center gap-6 w-[300px] rounded-none border left-[-8px] top-[106%]">
             <Link to={'/hospitals'} className="text-black relative navlinks">المستشفيات</Link>
-            <Link className="text-black relative navlinks">العيادات الخارجية</Link>
+            <Link to={'/clinics-home'} className="text-black relative navlinks">العيادات الخارجية</Link>
             <Link className="text-black relative navlinks">العروض والتخفيضات</Link>
             <Link className="text-black relative navlinks">مدونتنا الصحية</Link>
             <Link className="text-black relative navlinks">من نحن</Link>

@@ -17,10 +17,10 @@ import Hospital from './Pages/Hospital';
 import AboutUsHospital from './Components/hospital/components/AboutUsHospital';
 import MajorsHospital from './Components/hospital/components/MajorsHospital';
 import InsuranceCompanies from './Components/hospital/components/InsuranceCompanies';
+import ClinicsHome from './Pages/ClinicsHome';
 
 function App() {
   const location = useLocation();
-
   return (
     <div className="App">
       <Navbar />
@@ -29,6 +29,7 @@ function App() {
         <Route path='/search' element={<Search/>}/>
         <Route path='/maps' element={<MapsSearch/>}/>
         <Route path='/hospitals' element={<Hospitals/>}/>
+        <Route path='/clinics-home' element={<ClinicsHome/>}/>
         <Route path='/hospitals-cities' element={<HospitalsCities/>}/>
         <Route path='/hospital-profile' element={<Hospital/>}>
         <Route path="/hospital-profile" element={<AboutUsHospital />} />

@@ -8,7 +8,7 @@ function FormSearch() {
                 <div className="label">
                     <span className="label-text text-black">اسم المستشفى</span>
                 </div>
-                <div className="input input-bordered flex items-center gap-2 rounded-[29px]">
+                <div className="input input-bordered bg-white flex items-center gap-2 rounded-[29px]">
                 <input type="text" placeholder="اسم المستشفى" className="grow w-full max-w-xs" />
                 <img 
                     className="h-4 w-4 opacity-70"
@@ -19,7 +19,7 @@ function FormSearch() {
                 <div className="label">
                     <span className="label-text text-black">المدينة</span>
                 </div>
-                <select className="select select-bordered" defaultValue={'الرياض'}>
+                <select className="select select-bordered bg-white" defaultValue={'الرياض'}>
                     <option >الرياض</option>
                     <option>مكة المكرمة</option>
                     <option>جدة</option>
@@ -31,7 +31,7 @@ function FormSearch() {
                 <div className="label">
                     <span className="label-text text-black">التخصصات</span>
                 </div>
-                <select className="select select-bordered" defaultValue={'الأسنان'}>
+                <select className="select select-bordered bg-white" defaultValue={'الأسنان'}>
                     <option >الأسنان</option>
                     <option>الأنف والأذن</option>
                     <option>الطب النفسي</option>

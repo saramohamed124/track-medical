@@ -4,7 +4,7 @@ import { Logo } from "./components/Logo";
 
 function Navbar() {
     return (
-        <div className="navbar bg-base-100 flex justify-between m-0 max-h-[80px]">
+        <div className="navbar bg-white flex justify-between m-0 max-h-[80px]">
           <Logo/>      
           <div className="lg:navbarend">
             <div className="dropdown">

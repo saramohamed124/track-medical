@@ -46,7 +46,7 @@ const CardGrid = () => {
         >
           {[riyadh_img, gadah_img, dammam_img, mekka_img, madina_img, riyadh_img, gadah_img, dammam_img, mekka_img, madina_img, riyadh_img, gadah_img].map((img, index) => (
             <SwiperSlide key={index}>
-              <div className="card card-compact bg-base-100 w-[230px] shadow-xl rounded-tr-md rounded-tl-md">
+              <div className="card card-compact bg-white w-[230px] shadow-xl rounded-tr-md rounded-tl-md">
                 <figure>
                   <img className='w-full h-[190px]' src={img} alt={`image-${index}`} />
                 </figure>

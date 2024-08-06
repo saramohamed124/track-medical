@@ -1,3 +1,4 @@
+import AdsHome from "../Components/Home/components/AdsHome";
 import Deals from "../Components/Home/components/deals/Deals";
 import Header from "../Components/Home/components/header/Header";
 import Hospitals from "../Components/Home/components/hospitals/Hospitals";
@@ -10,8 +11,11 @@ function Home() {
             <Header/>
             <div className="container">
                 <Search/>
+                <AdsHome/>
                 <Hospitals/>
+                <AdsHome/>
                 <Majors/>
+                <AdsHome/>
                 <Deals/>
             </div>
             

@@ -5,18 +5,13 @@ import { registerHospital } from '../../../../../../api/api';
 import { CitiesData } from './cities';
 import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet'
+
 // Component for map marker
-const boundingBox = L.latLngBounds(
-    L.latLng(40.7128 - 0.1, -74.006 - 0.1), // Southwest corner
-    L.latLng(40.7128 + 0.1, -74.006 + 0.1)  // Northeast corner
-  );
 function LocationMarker({ setMapLocation }) {
     const [position, setPosition] = useState(null);
 
     useMapEvents({
         click(e) {
-            
             setPosition(e.latlng);
             setMapLocation({ lat: e.latlng.lat, long: e.latlng.lng });
         }
@@ -32,6 +27,7 @@ export default function SignUpHospitalsCustom() {
     const navigate = useNavigate();
     const [errorMsg, setErrorMsg] = useState('');
     const [mapLocation, setMapLocation] = useState({ lat: 0, long: 0 });
+    const [mapError, setMapError] = useState(false)
     const citiesData = [...CitiesData];
 
     // Regex patterns for validation
@@ -39,10 +35,18 @@ export default function SignUpHospitalsCustom() {
     const nameEnRegex = /^[A-Za-z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^((([0]{2}|[+])966|20)|0)(5\d{8})|(1\d{9})$/;
-
+   
+    
     async function handleSubmitSignup(data) {
-
+       
+    
     try {
+        console.log(mapLocation.lat === 0 && mapLocation.long === 0);
+        if(mapLocation.lat === 0 && mapLocation.long === 0){
+            setMapError(true)
+        }else{
+            setMapError(false)
+        }
         const res = await registerHospital({ type: "Hospital", ...data, mapLocation });
 
         const status = res.status || res.response?.status || res.data?.status;
@@ -53,9 +57,13 @@ export default function SignUpHospitalsCustom() {
         }
         
     } catch (error) {
+        
         const status = error.status || error.response.status || error.data?.status;
         if (status === 400 || status === 401) {
             setErrorMsg('هذا الحساب موجود من قبل');
+            setTimeout(()=>{
+            navigate('/signin-hospitals')
+            },3000)
         }  else {
             setErrorMsg('حدث خطأ غير متوقع');
         }
@@ -188,7 +196,7 @@ export default function SignUpHospitalsCustom() {
                         <div>
                             <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>الموقع على الخريطة </span>
                         </div>
-                        <div className="w-full lg:col-span-2 h-64 overflow-hidden">
+                        <div className="w-full lg:col-span-2 h-64 overflow-hidden" >
                             <MapContainer center={[24.7136, 46.6753]} zoom={10} style={{ height: "100%", width: "100%" }}>
                                 <TileLayer
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -196,7 +204,11 @@ export default function SignUpHospitalsCustom() {
                                 />
                                 <LocationMarker setMapLocation={setMapLocation}  />
                             </MapContainer>
+                            
                         </div>
+                        {mapError && (
+                                <span className='text-red-600 avenir-book'>برجاء اختيار موقع علي الخريطة</span>
+                            )}
                     </label>
 
                     <label className='avenir-book text-white flex-box-center flex-col gap-4 my-4  lg:row-[4] lg:col-[2]'>

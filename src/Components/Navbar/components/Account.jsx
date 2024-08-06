@@ -5,7 +5,7 @@ const Account = () => {
     return (
         <div className='px-4 z-50'>
             <details className="dropdown ">
-            <summary className="btn m-1 bg-white border-none">
+            <summary className="btn m-1 bg-white hover:bg-opacity-5 border-none">
             <img src={account_icon} alt='account-icon'/>
             </summary>
                 <ul className="absolute top-[122%] left-[-24px] bg-white p-4 shadow">

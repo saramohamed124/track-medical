@@ -4,13 +4,19 @@ import { useNavigate } from 'react-router-dom';
 import { registerHospital } from '../../../../../../api/api';
 import { CitiesData } from './cities';
 import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
-
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet'
 // Component for map marker
+const boundingBox = L.latLngBounds(
+    L.latLng(40.7128 - 0.1, -74.006 - 0.1), // Southwest corner
+    L.latLng(40.7128 + 0.1, -74.006 + 0.1)  // Northeast corner
+  );
 function LocationMarker({ setMapLocation }) {
     const [position, setPosition] = useState(null);
 
     useMapEvents({
         click(e) {
+            
             setPosition(e.latlng);
             setMapLocation({ lat: e.latlng.lat, long: e.latlng.lng });
         }
@@ -32,7 +38,7 @@ export default function SignUpHospitalsCustom() {
     const nameArRegex = /^[\u0600-\u06FF\s]+$/;
     const nameEnRegex = /^[A-Za-z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^(?:\+966|00966|966)?\s?\d{2}\s?\d{10}$/;
+    const phoneRegex = /^((([0]{2}|[+])966|20)|0)(5\d{8})|(1\d{9})$/;
 
     async function handleSubmitSignup(data) {
 
@@ -42,17 +48,21 @@ export default function SignUpHospitalsCustom() {
         const status = res.status || res.response?.status || res.data?.status;
 
         console.log("Status:", status);
-
+        if (status === 200 || status === 201) {
+            navigate('/'); 
+        }
+        
+    } catch (error) {
+        const status = error.status || error.response.status || error.data?.status;
         if (status === 400 || status === 401) {
             setErrorMsg('هذا الحساب موجود من قبل');
-        } else if (status === 200) {
-            navigate('/'); 
-        } else {
+        }  else {
             setErrorMsg('حدث خطأ غير متوقع');
         }
-    } catch (error) {
         console.error("Error during registration:", error);
-        setErrorMsg('حدث خطأ أثناء تسجيل الحساب'); // Account Exist Already I Will Work on This Problem
+        // setErrorMsg('حدث خطأ أثناء تسجيل الحساب'); // Account Exist Already I Will Work on This Problem
+        console.log(error.response.status);
+        
     }
     }
 
@@ -164,26 +174,27 @@ export default function SignUpHospitalsCustom() {
 
                     <label className="form-control w-full max-w-xs lg:row-[3/5] lg:col-[2]">
                         <div>
-                            <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>وصف (اختياري)</span>
+                            <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>وصف</span>
                         </div>
                         <textarea 
                             className="textarea textarea-bordered bg-white h-[150px] w-full max-w-xs avenir-book" 
-                            placeholder='ادخل وصف (اختياري)'
-                            {...register("description")}
+                            placeholder='ادخل وصف'
+                            {...register("description",{required: true})}
                         ></textarea>
+                        {errors.description && <span className='text-red-600 avenir-book'>الوصف مطلوب</span>}
                     </label>
 
                     <label className="form-control w-full max-w-xs lg:row-[4] lg:col-[1]">
                         <div>
-                            <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>الموقع على الخريطة (اختياري)</span>
+                            <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>الموقع على الخريطة </span>
                         </div>
-                        <div className="w-full lg:col-span-2 h-64">
+                        <div className="w-full lg:col-span-2 h-64 overflow-hidden">
                             <MapContainer center={[24.7136, 46.6753]} zoom={10} style={{ height: "100%", width: "100%" }}>
                                 <TileLayer
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 />
-                                <LocationMarker setMapLocation={setMapLocation} />
+                                <LocationMarker setMapLocation={setMapLocation}  />
                             </MapContainer>
                         </div>
                     </label>
@@ -195,7 +206,7 @@ export default function SignUpHospitalsCustom() {
                         </div>
                         {errors.termsAgree && <span className='text-red-600 avenir-book'>يجب الموافقة علي الشروط والأحكام</span>}
                         </label>
-                    {errorMsg && <span className='text-red-600 avenir-book'>{errorMsg}</span>}
+                    {errorMsg && <span className='text-red-600 avenir-book lg:row-[5] lg:col-[1/3]'>{errorMsg}</span>}
 
                     <button type="submit" className="btn mt-9 px-9 rounded-md text-black hover:bg-opacity-5 bg-[--main-bg-color-btn] lg:row-[5] lg:col-[1/3]">إرسال الطلب</button>
                 </form>

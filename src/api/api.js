@@ -12,11 +12,11 @@ const api = axios.create({
 // register Hospital
 export const registerHospital = (data) => api.post('/client-requests',data)
 // Login Hospitals
-export const logInHospital = (data) => api.post('/login-hospital',data)
+export const logInHospital = (data) => api.post('/auth/client-login',data)
 // register Member
 export const registerMember = (data) => api.post('/singup-member',data)
 // Login Member
-export const logInMember = (data) => api.post('/login-member',data)
+export const logInMember = (data) => api.post('auth/client-login',data)
 // OTP 
 export const verifyOTP = (data) => api.post('/verify-otp',data)
 

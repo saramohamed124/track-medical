@@ -34,10 +34,8 @@ export function FormSignupHospitals() {
     description, setDescription,
     googleMapLink, setGoogleMapLink,
   } = useContext(AuthContext);
-  const [cityerror,setErrorCity] = useState(false)
 
   const [mapLocation, setMapLocation] = useState({ lat: 0, long: 0 });
-
   // Regex patterns for validation
   const nameArRegex = /^[\u0600-\u06FF\s]+$/;
   const nameEnRegex = /^[A-Za-z\s]+$/;

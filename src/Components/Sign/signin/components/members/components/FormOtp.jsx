@@ -1,4 +1,18 @@
+import { useState } from "react";
+
 function FormOtp() {
+    const [user, setUser] = useState("");
+    const [otp, setOtp] = useState("")
+    const verityOtp = async()=>{
+        try{
+        const data =await user.confirmation(otp)
+        console.log(data);
+        
+        }catch(error){
+            console.log(error);
+            
+        }
+    }
     return ( 
         <div className="form-signs">
         <div>
@@ -10,9 +24,9 @@ function FormOtp() {
             <p className="input-signin">سيصلك كود تأكيد حسابي في رسالة نصية على
                 رقم جوالك الذي ادخلته مسبقا</p>
             </div>
-            <input type="text" placeholder="كود من 6 ارقام" className="input input-bordered bg-white w-[90%] m-auto max-w-xs avenir-book" />
+            <input onChange={(e)=> setOtp(e.target.value)} type="text" placeholder="كود من 6 ارقام" className="input input-bordered bg-white w-[90%] m-auto max-w-xs avenir-book" />
         </label>
-        <button className="btn-signs">تسجيل الدخول</button>
+        <button onClick={verityOtp} className="btn-signs">تسجيل الدخول</button>
         </form>
         </div>
     </div>

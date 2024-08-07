@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signin_icon from '../assets/icons/singin.svg'
 import signup_icon from '../assets/icons/signup.svg'
 import Cookies from 'js-cookie';
 
 function SignList() {
+    const navigate = useNavigate()
     const token = Cookies.get('authToken');
     
     const logout = ()=>{
         Cookies.remove('authToken')
-        console.log(token);
+        navigate('/')
+        // console.log(token);
         
     }
     return ( 

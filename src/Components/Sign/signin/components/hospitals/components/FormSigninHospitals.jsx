@@ -3,10 +3,11 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { logInHospital } from '../../../../../../api/api';
+import { useNavigate } from 'react-router-dom';
 
 function FormSigninHospitals() {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    
+    const navigate = useNavigate()
     const onSubmit = async (data) => {
         try {
             // Authenticate the user
@@ -14,22 +15,25 @@ function FormSigninHospitals() {
 
             // Save the authentication token to cookies
             const token = response.data.data.token;
-            Cookies.set('authToken', token);
-            console.log(response);
+            // Cookies.set('authToken', token);
+            // console.log(response);
             
-
+            
 
             // Check the user role from the response
             const userRole = response.data.data.user.type;
-            console.log(userRole);
+            // console.log(userRole);
             
             // Save user role to cookies
             Cookies.set('userRole', userRole);
 
+            navigate('/');
             // Handle successful login (e.g., redirect or show success message)
+
             console.log('Login successful');
         } catch (error) {
-            console.error('Login failed', error.response ? error.response.data : error.message);
+            // console.error('Login failed', error.response ? error.response.data : error.message);
+             console.error('Login failed');
         }
     };
 

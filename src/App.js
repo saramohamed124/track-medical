@@ -20,6 +20,7 @@ import InsuranceCompanies from './Components/hospital/components/InsuranceCompan
 import ClinicsHome from './Pages/ClinicsHome';
 import ProtectRoutes from './routes/admin/ProtectRoutes';
 import DashboardAll from './Components/admin/dashboard/DashboardAll';
+import ClinicsHospital from './Pages/ClinicsHospital';
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
         <Route path='/maps' element={<MapsSearch/>}/>
         <Route path='/hospitals' element={<Hospitals/>}/>
         <Route path='/clinics-home' element={<ClinicsHome/>}/>
+        <Route path='/clinics-hospitals' element={<ClinicsHospital/>}/>
         <Route path='/hospitals-cities' element={<HospitalsCities/>}/>
         <Route path="/superAdmin/dashboard" element={<DashboardAll/>} />
         <Route path='/hospital-profile' element={<Hospital/>}>

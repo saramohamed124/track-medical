@@ -27,6 +27,7 @@ import ErrorUnauthorized from './Components/ErrorUnauthorized';
 import AddHospital from './Components/admin/hospital/components/AddHospital';
 import HospitalAdmin from './Components/admin/hospital/components/HospitalAdmin';
 import Cookies from 'js-cookie';
+import AdminLogin from './Components/Sign/AdminLogin';
 
 function App() {
   const location = useLocation();
@@ -71,6 +72,7 @@ function App() {
         <Route path="/signin-hospitals" element={<SigninHospitals />} />
         <Route path="/signin-members" element={<SigninMember />} />
         <Route path="/signup-hospitals" element={<SignupHospitals />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/signup-members" element={<SignupMembers />} />
         <Route path='/otp-code' element={<SignFormOtp/>}/>
       </Routes>

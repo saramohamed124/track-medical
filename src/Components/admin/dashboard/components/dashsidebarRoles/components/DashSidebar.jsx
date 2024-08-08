@@ -27,13 +27,13 @@ export default function DashSidebar() {
         {role.links.map((link, index) => (
           <li className='' key={index}>
             <Link className='flex flex-row gap-2 items-center' to={link.link}>
-            {link.src && <img className="w-[1.8rem] min-w-5" src={link.src} alt={link.name} />}
+            {link.src && <img className=" max-w-6" src={link.src} alt={link.name} />}
             <span className='hidden md:block'>{link.name}</span>
             </Link>
           </li>
         ))}
         <li className='flex flex-row gap-2 items-center mt-10 cursor-pointer' onClick={logout}>
-          <img className="w-[1.8rem] min-w-5" src={logout_icon} alt='Logout' />
+          <img className="max-w-6" src={logout_icon} alt='Logout' />
           <span className='hidden md:block' >Logout</span>
         </li>
       </ul>

@@ -3,8 +3,8 @@ import search_icon from '../assets/search_icon.svg'
 
 export default function SearchDeals() {
   return (
-    <div className='w-fit m-auto'>
-        <form className="form-search py-4 px-4">
+    <div className='w-fit mb-10 mx-auto'>
+        <form className="form-search py-3 px-3">
             <label className="form-control w-[14rem]">
                 <div className="label">
                     <span className="label-text text-black">المدينة</span>
@@ -28,7 +28,7 @@ export default function SearchDeals() {
                     <option>المخ والأعصاب</option>
                 </select>
             </label>
-           <button className='bg-[--main-color-green]  p-4 rounded-[50%] flex-between-center md:self-end butn'>
+           <button className='bg-[--main-color-green]  p-3 rounded-[50%] flex-between-center md:self-end butn'>
            <img className='max-w-full' src={search_icon} alt="search_icon"/>
            </button>
         </form>

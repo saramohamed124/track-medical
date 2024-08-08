@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import deal_img from '../../Home/assets/imgs/hospital.png';
 import { dealsData } from '../../json/dealsData';
 import double_left_icon from '../../hospitals/assets/icons/double-left.svg'
+import { Link } from 'react-router-dom';
 function DealsCards() {
     const [deals, setDeals] = useState([]);
 
@@ -23,11 +24,11 @@ function DealsCards() {
                         backgroundPosition: 'center' 
                     }}
                 >
-                    <span 
+                    <Link to={'/deals-info'}
                         className='w-full flex-box-center bg-[--main-color-orange] p-6 avenir-heavy text-black text-xl text-center cursor-pointer box'
                     >
                         {deal.title}
-                    </span>
+                    </Link>
                 </div>
             ))}
             <div className="flex-box-center my-8 avenir-heavy">

@@ -26,7 +26,8 @@ export const roles = [
       type: 'Client Admin',
       links: [
         { name: 'لوحة التحكم', src: home_icon, link: '/admin/dashboard/' },
-        { name: 'الملف', src: folder_icon, link: '/admin/dashboard/hospital-info-admin' }
+        { name: 'الملف', src: folder_icon, link: '/admin/dashboard/hospital-info-admin' },
+        { name: 'الفريق', src: team_icon, link: '/admin/dashboard/team-admin' },
       ]
     }
   ];

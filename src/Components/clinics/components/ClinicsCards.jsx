@@ -13,6 +13,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import SwiperCore from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -57,7 +58,7 @@ function ClinicsCards() {
                     className='w-[100px] max-h-[80px]'
                     src={item.icon}
                     alt="brain" />
-                    <h2 className="heading-major-card">{item.label}</h2>
+                    <Link to={'/clinics-hospitals'} className="heading-major-card">{item.label}</Link>
             </div>
         </SwiperSlide>
           ))}

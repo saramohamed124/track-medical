@@ -54,7 +54,7 @@ export default function HospitalAdmin() {
         // return <div className="text-red-600">{error}</div>;
         return <ErrorNotFound/>;
     }
-    console.log(userRole);
+    // console.log(userRole);
     
     if(userRole === 'Client Admin'){
     if (!hospitalData) {

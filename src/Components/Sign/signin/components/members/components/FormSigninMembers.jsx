@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // For navigation
+import { Link, useNavigate } from "react-router-dom"; // For navigation
 import { signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import { auth } from "../../../../../../firebase/firebase";
 
@@ -56,10 +56,12 @@ function FormSigninMembers() {
                             <span className="text-[#9ca3af]">966+</span>
                         </div>
                     </label>
-                    <button type="submit" className="btn-signs">
-                        تسجيل الدخول
+                        <button className="btn-signs" onClick={e=>e.preventDefault()}>
+                        <Link to={'/otp-code'}>تسجيل الدخول
+                        </Link>
                     </button>
-                    <div id="recaptcha"></div>
+                     
+                    {/* <div id="recaptcha"></div> */}
                 </form>
             </div>
         </div>

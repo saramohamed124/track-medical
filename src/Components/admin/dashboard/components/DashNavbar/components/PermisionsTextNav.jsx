@@ -10,8 +10,8 @@ export default function PermissionsTextNav() {
             case 'Track Super Admin':
                 setRole('تراك');
                 break;
-            case 'Admin':
-                setRole('ادمن');
+            case 'Client Admin':
+                setRole('اسم المستشفى');
                 break;
             default:
                 setRole('');

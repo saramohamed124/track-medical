@@ -10,6 +10,7 @@ function SignList() {
     const logout = ()=>{
         Cookies.remove('authToken')
         Cookies.remove('userRole')
+        Cookies.remove('HospitalId')
         navigate('/')
         // console.log(token);
         

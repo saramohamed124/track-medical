@@ -12,12 +12,18 @@ function FormSigninHospitals() {
         try {
             // Authenticate the user
             const response = await logInHospital(data);
-
+            console.log(response.data.data.user.clientId);
+            const id = response.data.data.user.clientId;
+if(id){
+    Cookies.set('HospitalId', id);
+    
+}
             // Save the authentication token to cookies
             const token = response.data.data.token;
             Cookies.set('authToken', token);
             // console.log(response);
             
+            // console.log(response);
             
 
             // Check the user role from the response

@@ -3,6 +3,7 @@ import { useState } from "react";
 function FormOtp() {
     return ( 
         <div className="form-signs">
+            
         <div>
         <p className="avenir-heavy text-3xl text-white mb-9">تسجيل الدخول</p>
          <p className="avenir-heavy text-xl text-white mb-9">أهلا أحمد، ادخل كود التأكيد </p>

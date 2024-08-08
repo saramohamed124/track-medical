@@ -1,4 +1,4 @@
-import { Route, Router, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import Navbar from "./Components/Navbar/Navbar";
 import Home from './Pages/Home';
@@ -52,11 +52,11 @@ function App() {
         <Route path='/clinics-home' element={<ClinicsHome/>}/>
         <Route path='/clinics-hospitals' element={<ClinicsHospital/>}/>
         <Route path='/hospitals-cities' element={<HospitalsCities/>}/>
-        <Route path='/hospital-test-admin' element={<HospitalAdmin/>}/>
     
     <Route path="/admin/dashboard" element={<DashboardAll />}>
         <Route path='/admin/dashboard/add-hospital' element={<AddHospital/>}/>
           <Route index element={<DashboardHome />} />
+          <Route path='/admin/dashboard/hospital-info-admin' element={<HospitalAdmin/>}/>
           {/* Define additional nested routes here if needed */}
         </Route>
         <Route path="/error-not-found" element={<ErrorNotFound />} />

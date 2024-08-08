@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AddHospitalAdmin} from '../../../../api/api'; // Assuming fetchClientDetails is a function in your API module
 import Cookies from 'js-cookie';
+import ErrorNotFound from '../../../ErrorNotFound';
 
 export default function AddHospital() {
     const { register, handleSubmit, formState: { errors }, getValues } = useForm();
     const navigate = useNavigate();
     const [errorMsg, setErrorMsg] = useState('');
+    const role = Cookies.get('userRole');
 
     // Regex patterns for validation
     const nameArRegex = /^[\u0600-\u06FF\s]+$/;
@@ -19,13 +21,12 @@ export default function AddHospital() {
         try {
             const res = await AddHospitalAdmin({ type: "Hospital", ...data });
             const status = res.status || res.response?.status || res.data?.status;
-            const id = res.data.data.id;
-
+            const id = res.data.data.user.clientId;
             if (status === 200 || status === 201) {
                 Cookies.set('HospitalId', id);
                 
 
-                navigate('/hospital-test-admin'); 
+                // navigate('/hospital-test-admin'); 
             } else {
                 setErrorMsg('حدث خطأ غير متوقع');
             }
@@ -42,7 +43,9 @@ export default function AddHospital() {
     }
 
     return (
-        <div className='my-4 mx-3 flex flex-col justify-around w-full overflow-y-scroll overflow-x-clip'>
+        <div className='m-auto w-full'>
+             {(role === 'Track Super Admin')?(
+            <div className='my-4 mx-3 flex flex-col justify-around w-full overflow-y-scroll overflow-x-clip'>
             <p className='avenir-heavy text-4xl text-center text-black mx-10 my-3'>تسجيل مستشفى</p>
             <form
                 className="w-[80%] md:w-full justify-items-center items-center text-center m-auto md:max-w-[800px] grid grid-cols-1 md:grid-cols-2 gap-5 bg-[--main-color-green] p-4 rounded-md"
@@ -181,5 +184,12 @@ export default function AddHospital() {
                 </button>
             </form>
         </div>
+        ):(
+            <div className='my-4 mx-auto'>
+            <ErrorNotFound/>
+            </div>
+        )} 
+       </div>
+  
     );
 }

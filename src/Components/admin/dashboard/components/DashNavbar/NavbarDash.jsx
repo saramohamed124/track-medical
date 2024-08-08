@@ -5,7 +5,7 @@ import PermissionsTextNav from './components/PermisionsTextNav'
 
 export default function Navbar() {
   return (
-    <div className="navbar bg-white flex flex-col md:flex-row justify-between m-0  shadow-md">
+    <div className="navbar bg-white flex flex-col md:flex-row justify-between mx-0  shadow-md mb-2">
     <div className=" flex  gap-5 w-fit">
       <div>
     <Logo/>

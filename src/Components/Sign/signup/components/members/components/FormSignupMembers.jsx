@@ -10,7 +10,7 @@ const FormSignupMembers = () => {
             <div className="label avenir-heavy">
                 <span className="input-signin">ادخل الإسم </span>
             </div>
-            <input type="text" placeholder="الإسم لاكامل" className="input input-bordered bg-white w-full m-auto max-w-xs avenir-book" />
+            <input type="text" placeholder="الإسم بالكامل" className="input input-bordered bg-white w-full m-auto max-w-xs avenir-book" />
         </label>
         <label className="form-control w-full max-w-xs">
             <div className="label avenir-heavy">

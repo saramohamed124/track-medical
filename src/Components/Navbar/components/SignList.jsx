@@ -9,6 +9,7 @@ function SignList() {
     
     const logout = ()=>{
         Cookies.remove('authToken')
+        Cookies.remove('userRole')
         navigate('/')
         // console.log(token);
         
@@ -28,9 +29,8 @@ function SignList() {
                       </li>
               </ul>
             ):
-        <button onClick={logout}>logout</button>
-        }
-           
+        <button className="bg-[--main-color-orange] text-black py-2 px-3 rounded-md" onClick={logout}>logout</button>
+        }  
         </div>
        
     );

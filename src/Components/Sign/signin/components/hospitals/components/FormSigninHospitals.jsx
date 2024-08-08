@@ -15,7 +15,7 @@ function FormSigninHospitals() {
 
             // Save the authentication token to cookies
             const token = response.data.data.token;
-            // Cookies.set('authToken', token);
+            Cookies.set('authToken', token);
             // console.log(response);
             
             

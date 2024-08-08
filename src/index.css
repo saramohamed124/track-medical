@@ -27,7 +27,7 @@
 body {
   margin: 0;
   font-family: Avenir-Arabic;
-  background: white;
+  background-color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

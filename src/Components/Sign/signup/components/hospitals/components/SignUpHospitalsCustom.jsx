@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { registerHospital } from '../../../../../../api/api';
 import { CitiesData } from './cities';
 import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import axios from 'axios';
 
 // Component for map marker
 function LocationMarker({ setMapLocation }) {
@@ -27,7 +29,7 @@ export default function SignUpHospitalsCustom() {
     const navigate = useNavigate();
     const [errorMsg, setErrorMsg] = useState('');
     const [mapLocation, setMapLocation] = useState({ lat: 0, long: 0 });
-    const [mapError, setMapError] = useState(false)
+    const [mapError, setMapError] = useState(false);
     const citiesData = [...CitiesData];
 
     // Regex patterns for validation
@@ -35,43 +37,45 @@ export default function SignUpHospitalsCustom() {
     const nameEnRegex = /^[A-Za-z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^((([0]{2}|[+])966|20)|0)(5\d{8})|(1\d{9})$/;
-   
     
     async function handleSubmitSignup(data) {
-       
-    
-    try {
-        console.log(mapLocation.lat === 0 && mapLocation.long === 0);
-        if(mapLocation.lat === 0 && mapLocation.long === 0){
-            setMapError(true)
-        }else{
-            setMapError(false)
+        const token = Cookies.get('authToken');
+        
+        // Validate map location
+        if (mapLocation.lat === 0 && mapLocation.long === 0) {
+            setMapError(true);
+            return;
+        } else {
+            setMapError(false);
         }
-        const res = await registerHospital({ type: "Hospital", ...data, mapLocation });
+        
+        try {
+            const res = await registerHospital({ type: "Hospital", ...data, mapLocation });
+            const status = res.status || res.response?.status || res.data?.status;
 
-        const status = res.status || res.response?.status || res.data?.status;
-
-        console.log("Status:", status);
-        if (status === 200 || status === 201) {
-            navigate('/'); 
+            if (status === 200 || status === 201) {
+                // Reset Password Email After Register
+                await axios.patch(`${process.env.REACT_APP_API_URL}/auth/reset-password/${token}`, {
+                    password: "string", // Replace with actual password
+                    confirmedPassword: "string" // Replace with actual confirmed password
+                });
+                
+                navigate('/');
+            } else {
+                throw new Error('Registration failed');
+            }
+        } catch (error) {
+            const status = error.response?.status || error.status || error.data?.status;
+            if (status === 400 || status === 401) {
+                setErrorMsg('هذا الحساب موجود من قبل');
+                setTimeout(() => {
+                    navigate('/signin-hospitals');
+                }, 3000);
+            } else {
+                setErrorMsg('حدث خطأ غير متوقع');
+            }
+            console.error("Error during registration:", error);
         }
-        
-    } catch (error) {
-        
-        const status = error.status || error.response.status || error.data?.status;
-        if (status === 400 || status === 401) {
-            setErrorMsg('هذا الحساب موجود من قبل');
-            setTimeout(()=>{
-            navigate('/signin-hospitals')
-            },3000)
-        }  else {
-            setErrorMsg('حدث خطأ غير متوقع');
-        }
-        console.error("Error during registration:", error);
-        // setErrorMsg('حدث خطأ أثناء تسجيل الحساب'); // Account Exist Already I Will Work on This Problem
-        console.log(error.response.status);
-        
-    }
     }
 
     return (
@@ -79,7 +83,6 @@ export default function SignUpHospitalsCustom() {
             <div className='p-5'>
                 <p className="avenir-heavy text-3xl text-white mb-9">طلب تسجيل مركز طبي</p>
                 <form className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-5" onSubmit={handleSubmit(handleSubmitSignup)}>
-
                     <label className="form-control w-full max-w-xs">
                         <div>
                             <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>الإسم باللغة العربية</span>
@@ -127,8 +130,8 @@ export default function SignUpHospitalsCustom() {
                     </label>
 
                     <label className="form-control w-full max-w-xs">
-                        <div className="label">
-                            <span className="label-text text-white">المدينة/المنطقة</span>
+                        <div>
+                            <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>المدينة/المنطقة</span>
                         </div>
                         <select 
                             className="select select-bordered avenir-book bg-white text-gray-500 w-full max-w-xs" 
@@ -187,37 +190,35 @@ export default function SignUpHospitalsCustom() {
                         <textarea 
                             className="textarea textarea-bordered bg-white h-[150px] w-full max-w-xs avenir-book" 
                             placeholder='ادخل وصف'
-                            {...register("description",{required: true})}
+                            {...register("description",{required: "الوصف مطلوب"})}
                         ></textarea>
-                        {errors.description && <span className='text-red-600 avenir-book'>الوصف مطلوب</span>}
+                        {errors.description && <span className='text-red-600 avenir-book'>{errors.description.message}</span>}
                     </label>
 
                     <label className="form-control w-full max-w-xs lg:row-[4] lg:col-[1]">
                         <div>
                             <span className='block avenir-heavy text-white mt-3 mb-1 text-start'>الموقع على الخريطة </span>
                         </div>
-                        <div className="w-full lg:col-span-2 h-64 overflow-hidden" >
+                        <div className="w-full lg:col-span-2 h-64 overflow-hidden">
                             <MapContainer center={[24.7136, 46.6753]} zoom={10} style={{ height: "100%", width: "100%" }}>
                                 <TileLayer
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 />
-                                <LocationMarker setMapLocation={setMapLocation}  />
+                                <LocationMarker setMapLocation={setMapLocation} />
                             </MapContainer>
-                            
                         </div>
-                        {mapError && (
-                                <span className='text-red-600 avenir-book'>برجاء اختيار موقع علي الخريطة</span>
-                            )}
+                        {mapError && <span className='text-red-600 avenir-book'>برجاء اختيار موقع علي الخريطة</span>}
                     </label>
 
-                    <label className='avenir-book text-white flex-box-center flex-col gap-4 my-4  lg:row-[4] lg:col-[2]'>
+                    <label className='avenir-book text-white flex-box-center flex-col gap-4 my-4 lg:row-[4] lg:col-[2]'>
                         <div className="checkbox-terms flex gap-1">
-                        <input type="checkbox" className="checkbox border-2 rounded-none bg-white text-base" {...register("termsAgree", { required: "الموافقة على الشروط والأحكام مطلوبة" })} />
-                        <span>الموافقة على الشروط والأحكام</span>
+                            <input type="checkbox" className="checkbox border-2 rounded-none bg-white text-base" {...register("termsAgree", { required: "الموافقة على الشروط والأحكام مطلوبة" })} />
+                            <span>الموافقة على الشروط والأحكام</span>
                         </div>
-                        {errors.termsAgree && <span className='text-red-600 avenir-book'>يجب الموافقة علي الشروط والأحكام</span>}
-                        </label>
+                        {errors.termsAgree && <span className='text-red-600 avenir-book'>{errors.termsAgree.message}</span>}
+                    </label>
+                    
                     {errorMsg && <span className='text-red-600 avenir-book lg:row-[5] lg:col-[1/3]'>{errorMsg}</span>}
 
                     <button type="submit" className="btn mt-9 px-9 rounded-md text-black hover:bg-opacity-5 bg-[--main-bg-color-btn] lg:row-[5] lg:col-[1/3]">إرسال الطلب</button>

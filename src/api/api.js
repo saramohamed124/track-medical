@@ -20,4 +20,7 @@ export const logInMember = (data) => api.post('auth/client-login',data)
 // OTP 
 export const verifyOTP = (data) => api.post('/verify-otp',data)
 
+// Add Hospital Admin
+export const AddHospitalAdmin = (data) => api.post('/clients',data);
+
 export default api;

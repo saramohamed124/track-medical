@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Router, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import Navbar from "./Components/Navbar/Navbar";
 import Home from './Pages/Home';
@@ -21,12 +21,27 @@ import ClinicsHome from './Pages/ClinicsHome';
 import ProtectRoutes from './routes/admin/ProtectRoutes';
 import DashboardAll from './Components/admin/dashboard/DashboardAll';
 import ClinicsHospital from './Pages/ClinicsHospital';
+import DashboardHome from './Components/admin/dashboard/components/Dashhome/DashboardHome';
+import ErrorNotFound from './Components/ErrorNotFound';
+import ErrorUnauthorized from './Components/ErrorUnauthorized';
+import AddHospital from './Components/admin/hospital/components/AddHospital';
+import HospitalAdmin from './Components/admin/hospital/components/HospitalAdmin';
+import Cookies from 'js-cookie';
 
 function App() {
   const location = useLocation();
+  const userRole = Cookies.get('userRole');
+  const token = Cookies.get('authToken');
+ 
+ 
   return (
     <div className="App">
-      <Navbar />
+      {!location.pathname.includes('/admin') && (
+        <>
+        <Navbar/>
+      </>
+      )}
+
       <ProtectRoutes/>
 
       <Routes>
@@ -37,7 +52,16 @@ function App() {
         <Route path='/clinics-home' element={<ClinicsHome/>}/>
         <Route path='/clinics-hospitals' element={<ClinicsHospital/>}/>
         <Route path='/hospitals-cities' element={<HospitalsCities/>}/>
-        <Route path="/superAdmin/dashboard" element={<DashboardAll/>} />
+        <Route path='/hospital-test-admin' element={<HospitalAdmin/>}/>
+    
+    <Route path="/admin/dashboard" element={<DashboardAll />}>
+        <Route path='/admin/dashboard/add-hospital' element={<AddHospital/>}/>
+          <Route index element={<DashboardHome />} />
+          {/* Define additional nested routes here if needed */}
+        </Route>
+        <Route path="/error-not-found" element={<ErrorNotFound />} />
+        <Route path="/error-unauthorized" element={<ErrorUnauthorized />} />
+        <Route path="*" element={<ErrorNotFound />} /> {/* Handle 404 */}
         <Route path='/hospital-profile' element={<Hospital/>}>
         <Route path="/hospital-profile" element={<AboutUsHospital />} />
         <Route path="about-us" element={<AboutUsHospital />} />
@@ -54,13 +78,15 @@ function App() {
         && location.pathname !== '/signin-members' 
         && location.pathname !== '/signup-members' 
         && location.pathname !== '/signup-hospitals' 
-        && location.pathname !== '/otp-code' &&
+        && location.pathname !== '/otp-code' 
+        && !location.pathname.includes('/admin') &&
          (
         <>
           <Footer />
           <CopyRight />
         </>
       )}
+
     </div>
   );
 }

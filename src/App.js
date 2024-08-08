@@ -28,6 +28,7 @@ import AddHospital from './Components/admin/hospital/components/AddHospital';
 import HospitalAdmin from './Components/admin/hospital/components/HospitalAdmin';
 import Cookies from 'js-cookie';
 import AdminLogin from './Components/Sign/AdminLogin';
+import DealsPage from './Pages/DealsPage';
 
 function App() {
   const location = useLocation();
@@ -53,6 +54,7 @@ function App() {
         <Route path='/clinics-home' element={<ClinicsHome/>}/>
         <Route path='/clinics-hospitals' element={<ClinicsHospital/>}/>
         <Route path='/hospitals-cities' element={<HospitalsCities/>}/>
+        <Route path='/deals-offers' element={<DealsPage/>}/>
     
     <Route path="/admin/dashboard" element={<DashboardAll />}>
         <Route path='/admin/dashboard/add-hospital' element={<AddHospital/>}/>

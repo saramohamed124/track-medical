@@ -6,7 +6,10 @@ import { registerHospital } from '../../../../../../api/api';
 import { CitiesData } from './cities';
 import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet-src.esm'
+import marker_icon from 'leaflet/dist/images/marker-icon.png'
 import axios from 'axios';
+import L from 'leaflet';
 
 // Component for map marker
 function LocationMarker({ setMapLocation }) {
@@ -18,9 +21,14 @@ function LocationMarker({ setMapLocation }) {
             setMapLocation({ lat: e.latlng.lat, long: e.latlng.lng });
         }
     });
-
+    const customIcon = L.icon({
+        iconUrl: marker_icon,
+        iconSize: [25, 41], // Size of the icon
+        iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
+        popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
+    });
     return position === null ? null : (
-        <Marker position={position}></Marker>
+        <Marker position={position} icon={customIcon}></Marker>
     );
 }
 

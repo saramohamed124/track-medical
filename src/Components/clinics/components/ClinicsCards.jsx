@@ -46,6 +46,10 @@ function ClinicsCards() {
             { icon: eye_icon, label: 'العيون' },
             { icon: embryo_icon, label: 'النساء والولادة' },
             { icon: stomach_icon, label: 'الطب الباطني' },
+            { icon: heart_icon, label: 'جراحة القلب' },
+            { icon: eye_icon, label: 'العيون' },
+            { icon: embryo_icon, label: 'النساء والولادة' },
+            { icon: stomach_icon, label: 'الطب الباطني' },
           ].map((item, index) => (
         <SwiperSlide key={index}>
         <div className="card-major">

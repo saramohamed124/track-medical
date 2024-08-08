@@ -30,7 +30,8 @@ if(id){
             
             // Save user role to cookies
             Cookies.set('userRole', userRole);
-
+                console.log(userRole);
+                
             navigate('/admin/dashboard');
 
             console.log('Login successful');

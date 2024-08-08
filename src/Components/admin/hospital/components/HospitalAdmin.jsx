@@ -10,10 +10,12 @@ export default function HospitalAdmin() {
     const [error, setError] = useState(null);
     const [errorStatus, setErrorStatus] = useState(null);
     const userRole = Cookies.get('userRole')
+    const token = Cookies.get('authToken')
     useEffect(() => {
         const fetchHospitalData = async () => {
             try {
                 const id = Cookies.get('HospitalId');
+                
                 if (!id) {
                     // setError('No hospital ID found in cookies');
                     return <ErrorNotFound/>;
@@ -22,7 +24,7 @@ export default function HospitalAdmin() {
                 const response = await axios.get(`${process.env.REACT_APP_API_URL}/clients/${id}`, {
                     headers: {
                         'Accept': '*/*',
-                        'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
+                        'Authorization': `Bearer ${token}`
                     }
                 });
 
@@ -52,9 +54,10 @@ export default function HospitalAdmin() {
         // return <div className="text-red-600">{error}</div>;
         return <ErrorNotFound/>;
     }
-
-    if(userRole === 'Client Admin' ){
-    if ( !hospitalData) {
+    console.log(userRole);
+    
+    if(userRole === 'Client Admin'){
+    if (!hospitalData) {
         return <Loader/>;
     }
     }else{

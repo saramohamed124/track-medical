@@ -5,7 +5,7 @@ function Majors() {
     return ( 
         <div className="parent-cards-flex">
                 <h1 className="heading-cards-flex">تصفح المستشفيات حسب التخصصات</h1>
-                <BrowseMoreButtton link={'/'}/>
+                <BrowseMoreButtton link={'/clinics-home'}/>
             <CardMajor/>
         </div>
      );

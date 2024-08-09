@@ -11,8 +11,9 @@ export default function HospitalAdmin() {
     console.log(hospitalData);
     
     useEffect(() => {
+        // window.location.reload();
         refetchHospitalData();
-    }, [refetchHospitalData]);
+    }, []);
 
     if (errorStatus === 401 && userRole !== 'Client Admin') {
         return <ErrorUnauthorized />;
@@ -24,6 +25,8 @@ export default function HospitalAdmin() {
 
     if (userRole !== 'Client Admin') {
         return <ErrorNotFound />;
+    }else{
+        refetchHospitalData();
     }
 
     if (!hospitalData) {

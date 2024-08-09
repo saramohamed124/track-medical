@@ -14,7 +14,7 @@ export default function DashSidebar() {
     return <ErrorNotFound />;
   }
   const logout = ()=>{
-    Cookies.remove('authToken')
+    Cookies.remove('adminToken')
     Cookies.remove('userRole')
     Cookies.remove('HospitalId')
     navigate('/')

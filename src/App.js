@@ -26,15 +26,15 @@ import ErrorNotFound from './Components/ErrorNotFound';
 import ErrorUnauthorized from './Components/ErrorUnauthorized';
 import AddHospital from './Components/admin/hospital/components/AddHospital';
 import HospitalAdmin from './Components/admin/hospital/components/HospitalAdmin';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 import AdminLogin from './Components/Sign/AdminLogin';
 import DealsPage from './Pages/DealsPage';
 import DealsInfoPage from './Pages/DealsInfoPage';
 
 function App() {
   const location = useLocation();
-  const userRole = Cookies.get('userRole');
-  const token = Cookies.get('authToken');
+  // const userRole = Cookies.get('userRole');
+  // const token = Cookies.get('authToken');
  
  
   return (

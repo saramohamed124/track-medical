@@ -10,7 +10,7 @@ const ContextGetData = ({ children }) => {
     const [hospitalData, setHospitalData] = useState(null);
     const [error, setError] = useState(null);
     const [errorStatus, setErrorStatus] = useState(null);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
     const token = Cookies.get('adminToken');
 
@@ -22,7 +22,7 @@ const ContextGetData = ({ children }) => {
                 setErrorStatus(404);
                 return;
             }
-            setLoading(true);
+            // setLoading(true);
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/clients/${id}`, {
                 headers: {
                     'Accept': '*/*',
@@ -42,14 +42,11 @@ const ContextGetData = ({ children }) => {
             }
             setErrorStatus(err.response ? err.response.status : 500);
         } finally {
-            setLoading(false);
+            // setLoading(false);
         }
     };
 
-    useEffect(() => {
-        fetchHospitalData();
-    }, [token]); // Re-fetch if token changes
-
+   
     return (
         <GetHospitalAdminData.Provider
             value={{ 

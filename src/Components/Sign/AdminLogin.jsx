@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Cookies from 'js-cookie';
 import { logInHospital } from '../../api/api';
@@ -7,6 +7,7 @@ import admin_login from './assets/admin-login.gif'
 export default function AdminLogin() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate()
+    const [ErrorUnauthorized,setErrorunauthorized] = useState(false)
     const onSubmit = async (data) => {
         try {
             // Authenticate the user
@@ -37,6 +38,12 @@ if(id){
             console.log('Login successful');
         } catch (error) {
              console.error('Login failed');
+             if(error.response.data.statusCode){
+                setErrorunauthorized(true);
+             }else{
+                setErrorunauthorized(false)
+             };
+             
         }
     };
   return (
@@ -56,7 +63,7 @@ if(id){
                     className="input input-bordered bg-white w-[90%] m-auto max-w-xs avenir-book" 
                     {...register('email', { required: 'البريد الإلكتروني مطلوب' })}
                 />
-                {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+                {errors.email && <p className="text-red-500 avenir-book">{errors.email.message}</p>}
             </label>
             <label className="form-control w-full max-w-xs">
                 <div className="label avenir-heavy">
@@ -68,8 +75,9 @@ if(id){
                     className="input input-bordered bg-white w-[90%] m-auto max-w-xs avenir-book" 
                     {...register('password', { required: 'كلمة المرور مطلوبة' })}
                 />
-                {errors.password && <p className="text-red-500">{errors.password.message}</p>}
+                {errors.password && <p className="text-red-500 avenir-book">{errors.password.message}</p>}
             </label>
+            {ErrorUnauthorized&&(<p className='text-red-500 avenir-book'>يرجي التأكد من البريد الإلكتروني او كلمة السر</p>)}
             <button type="submit" className="btn-signs">تسجيل الدخول</button>
         </form>
     </div>

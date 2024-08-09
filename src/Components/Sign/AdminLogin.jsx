@@ -19,7 +19,7 @@ if(id){
 }
             // Save the authentication token to cookies
             const token = response.data.data.token;
-            Cookies.set('authToken', token);
+            Cookies.set('adminToken', token);
             // console.log(response);
             
             // console.log(response);

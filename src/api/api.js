@@ -1,9 +1,12 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
+
+const adminToken = Cookies.get('adminToken')
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
   headers: {
-    'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
+    'Authorization': `Bearer ${adminToken}`,
     'Content-Type': 'application/json'
   }
 });

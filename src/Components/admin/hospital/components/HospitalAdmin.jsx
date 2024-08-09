@@ -1,73 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
-import axios from 'axios';
+import React, { useContext, useEffect } from 'react';
 import ErrorUnauthorized from '../../../ErrorUnauthorized';
 import Loader from './Loader';
 import ErrorNotFound from '../../../ErrorNotFound';
+import Cookies from 'js-cookie';
+import { GetHospitalAdminData } from './hospitalAdminInfo/ContextGetData';
 
 export default function HospitalAdmin() {
-    const [hospitalData, setHospitalData] = useState(null);
-    const [error, setError] = useState(null);
-    const [errorStatus, setErrorStatus] = useState(null);
-    const userRole = Cookies.get('userRole')
-    const token = Cookies.get('authToken')
+    const { hospitalData, errorStatus, error, refetchHospitalData } = useContext(GetHospitalAdminData);
+    const userRole = Cookies.get('userRole');
+    console.log(hospitalData);
+    
     useEffect(() => {
-        const fetchHospitalData = async () => {
-            try {
-                const id = Cookies.get('HospitalId');
-                
-                if (!id) {
-                    // setError('No hospital ID found in cookies');
-                    return <ErrorNotFound/>;
-                }
+        refetchHospitalData();
+    }, [refetchHospitalData]);
 
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/clients/${id}`, {
-                    headers: {
-                        'Accept': '*/*',
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-
-                setHospitalData(response.data.data);
-            } catch (err) {
-                if (err.response) {
-                    if (err.response.status === 401) {
-                        setErrorStatus(401);
-                    } else {
-                        setError(`Error: ${err.response.status} - ${err.response.data.message || 'Failed to fetch data'}`);
-                    }
-                } else {
-                    setError('Failed to fetch data');
-                }
-                console.error('Error fetching hospital data:', err);
-            }
-        };
-
-        fetchHospitalData();
-    }, []); // Empty dependency array ensures this runs once on mount
-
-    if (errorStatus === 401) {
+    if (errorStatus === 401 && userRole !== 'Client Admin') {
         return <ErrorUnauthorized />;
     }
 
-    if (error ) {
-        // return <div className="text-red-600">{error}</div>;
-        return <ErrorNotFound/>;
+    if (error) {
+        return <ErrorNotFound />;
     }
-    // console.log(userRole);
-    
-    if(userRole === 'Client Admin'){
+
+    if (userRole !== 'Client Admin') {
+        return <ErrorNotFound />;
+    }
+
     if (!hospitalData) {
-        return <Loader/>;
-    }
-    }else{
-        return <ErrorNotFound/>
+        return <Loader />;
     }
 
     return (
         <div className="p-4 text-white mx-auto text-center my-3">
             <h1 className="text-2xl text-black font-bold mb-4">Hospital Details</h1>
-            <div className="bg-[--main-color-green] text-end  p-4 rounded shadow">
+            <div className="bg-[--main-color-green] text-end p-4 rounded shadow">
                 {/* <p><strong>ID:</strong> {hospitalData.id}</p> */}
                 <p><strong>Type:</strong> {hospitalData.type}</p>
                 <p><strong>Arabic Name:</strong> {hospitalData.arName}</p>

@@ -9,7 +9,7 @@ import { roles } from '../roles'
 
 export default function DashboardAll() {
   const userRole = Cookies.get('userRole');
-  const token = Cookies.get('authToken');
+  const token = Cookies.get('adminToken');
   const role = roles.find(role => role.type === userRole);
 // console.log(token);
 

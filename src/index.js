@@ -5,14 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import AuthHospitalProviderSignUp from './context/auth/hospitals/AuthHospitalProviderSignUp';
+import ContextGetData from './Components/admin/hospital/components/hospitalAdminInfo/ContextGetData';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthHospitalProviderSignUp>
+    <ContextGetData>
+    <AuthHospitalProviderSignUp>
         <App />
       </AuthHospitalProviderSignUp>
+    </ContextGetData>
+  
     </BrowserRouter>
   </React.StrictMode>
 );
